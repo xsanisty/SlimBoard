@@ -1,0 +1,29 @@
+{
+    "name": "xsanisty/xpm",
+    "require": {
+        "slim/slim": "2.*",
+        "slim/extras": "2.0.*",
+        "slim/views":"0.1.*",
+        "twig/twig": "1.*",
+        "twig/extensions": "*",
+        "itsgoingd/slim-facades": "dev-master",
+        "illuminate/database" : "4.*",
+        "cartalyst/sentry" : "2.*",
+        "ircmaxell/password-compat": "1.0.*"
+        
+    },
+
+    "autoload": {
+        "classmap": [
+            "app/controllers",
+            "app/models"
+        ]
+    },
+
+    "authors": [
+        {
+            "name": "Ikhsan Agustian",
+            "email": "ikhsan017@gmail.com"
+        }
+    ]
+}

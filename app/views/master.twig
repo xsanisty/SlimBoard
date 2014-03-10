@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Slim Starter Application</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Core CSS - Include with every page -->
+    <link href="{{baseUrl()}}/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{baseUrl()}}/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{baseUrl()}}/assets/css/sb-admin.css" rel="stylesheet">
+</head>
+<body>
+    {% block body %}
+        <div id="wrapper">
+            {{include('topbar.twig')}}
+            {{include('sidebar.twig')}}
+
+            <div id="page-wrapper">
+                {% block content %}{% endblock %}
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+    {% endblock %}
+
+    <!-- Core Scripts - Include with every page -->
+    <script src="{{baseUrl()}}/assets/js/jquery-1.10.2.js"></script>
+    <script src="{{baseUrl()}}/assets/js/bootstrap.min.js"></script>
+    <script src="{{baseUrl()}}/assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- Page-Level Plugin Scripts - Blank -->
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="{{baseUrl()}}/assets/js/sb-admin.js"></script>
+</body>
+</html>
