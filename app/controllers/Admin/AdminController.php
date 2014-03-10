@@ -14,17 +14,17 @@ class AdminController extends \BaseController{
      * display the admin dashboard
      */
     public function index(){
-        App::render('admin/index.twig');
+        App::render('admin/index.twig', $this->data);
     }
 
     /**
      * display the login form
      */
     public function login(){
-        if(!Sentry::check()){
-            App::render('admin/login.twig', $this->data);
+        if(Sentry::check()){
+            Response::redirect($this->siteUrl('admin'));
         }else{
-            Response::redirect(App::urlFor('admin'));
+            App::render('admin/login.twig', $this->data);
         }
     }
 
@@ -40,16 +40,22 @@ class AdminController extends \BaseController{
                 'password'  => Input::post('password')
             );
 
+            $remember = Input::post('remember', false);
+
             // Try to authenticate the user
             $user = Sentry::authenticate($credential, false);
 
-            Sentry::login($user, false);
+            if($remember){
+                Sentry::loginAndRemember($user);
+            }else{
+                Sentry::login($user, false);
+            }
 
-            Response::redirect(App::urlFor('admin'));
+            Response::redirect($this->siteUrl('admin'));
         }catch(\Exception $e){
             App::flash('message', $e->getMessage());
 
-            Response::redirect(App::urlFor('login'));
+            Response::redirect($this->siteUrl('login'));
         }
     }
 
@@ -59,7 +65,7 @@ class AdminController extends \BaseController{
     public function logout(){
         Sentry::logout();
 
-        Response::redirect(App::urlFor('login'));
+        Response::redirect($this->siteUrl('login'));
     }
 
 }

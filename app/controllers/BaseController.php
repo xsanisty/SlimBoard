@@ -251,9 +251,20 @@ class BaseController{
      */
     protected function baseUrl(){
         $protocol   = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-        $domain     = $_SERVER['HTTP_HOST'].'/';
+        $domain     = $_SERVER['HTTP_HOST'];
         $path       = dirname($_SERVER['SCRIPT_NAME']).'/';
 
         return $protocol.$domain.$path;
+    }
+
+    /**
+     * generate siteUrl
+     */
+    protected function siteUrl($path, $includeIndex = false){
+        if($includeIndex){
+            return $this->data['baseUrl'].'index.php/'.$path;
+        }else{
+            return $this->data['baseUrl'].$path;
+        }
     }
 }

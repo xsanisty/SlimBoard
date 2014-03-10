@@ -1,6 +1,6 @@
 <?php
 
-Config::set('database', array(
+$config['database'] = array(
     'driver'    => 'mysql',
     'host'      => 'localhost',
     'database'  => 'database',
@@ -9,4 +9,4 @@ Config::set('database', array(
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix'    => '',
-));
+);
