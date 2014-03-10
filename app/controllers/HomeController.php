@@ -1,10 +1,9 @@
 <?php
 
-Class HomeController{
+Class HomeController extends BaseController{
 
     public function welcome(){
-        View::display('welcome.twig', array(
-            'title' => 'Hello Slim!'
-        ));
+        $this->data['title'] = 'Some title';
+        $this->app->render('welcome.twig', $this->data);
     }
 }

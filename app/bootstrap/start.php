@@ -22,6 +22,19 @@ $view->parserExtensions = array(
     new \Slim\Views\TwigExtension(),
 );
 
+
+$app->add(new \Slim\Middleware\SessionCookie(array(
+    'expires' => '20 minutes',
+    'path' => '/',
+    'domain' => null,
+    'secure' => false,
+    'httponly' => false,
+    'name' => 'slim_session',
+    'secret' => 'Jeyac1uX54n',
+    'cipher' => MCRYPT_RIJNDAEL_256,
+    'cipher_mode' => MCRYPT_MODE_CBC
+)));
+
 // initialize the Slim Facade class
 
 Facade::setFacadeApplication($app);

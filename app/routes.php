@@ -5,9 +5,9 @@
  */
 Route::group(
     '/admin', 
-    function() use ($app){
+    function(){
         if(!Sentry::check()){
-            Response::redirect($app->urlFor('login'));
+            Response::redirect(App::urlFor('login'));
         }
     },
     function(){
@@ -19,11 +19,10 @@ Route::group(
 );
 
 Route::get('/login', 'Admin\AdminController:login')->name('login');
+Route::get('/logout', 'Admin\AdminController:logout')->name('logout');
 Route::post('/login', 'Admin\AdminController:doLogin');
 
 /**
  * default routing
  */
-Route::get('/', function() use ($app){
-    $app->render('welcome.twig', array('title' => 'Hello world!'));
-});
+Route::get('/', 'HomeController:welcome');

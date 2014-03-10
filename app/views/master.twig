@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <base href="{{ baseUrl }}" />
     <title>Welcome to Slim Starter Application</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Core CSS - Include with every page -->
-    <link href="{{baseUrl()}}/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{baseUrl()}}/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="{{baseUrl()}}/assets/css/sb-admin.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/sb-admin.css" rel="stylesheet">
 </head>
 <body>
     {% block body %}
@@ -26,13 +27,13 @@
     {% endblock %}
 
     <!-- Core Scripts - Include with every page -->
-    <script src="{{baseUrl()}}/assets/js/jquery-1.10.2.js"></script>
-    <script src="{{baseUrl()}}/assets/js/bootstrap.min.js"></script>
-    <script src="{{baseUrl()}}/assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
     <!-- Page-Level Plugin Scripts - Blank -->
 
     <!-- SB Admin Scripts - Include with every page -->
-    <script src="{{baseUrl()}}/assets/js/sb-admin.js"></script>
+    <script src="assets/js/sb-admin.js"></script>
 </body>
 </html>
