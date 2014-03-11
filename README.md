@@ -75,9 +75,9 @@ App::render('welcome.twig', array('title' => 'Welcome to SlimStarter'));
 ```
 
 ####Hooks and Middlewares
-*All hooks and middlewares should be called within app/bootstrap/app.php
-*All middlewares class should be placed inside app/middlewares
-*Slim instance available as $app
+    * All hooks and middlewares should be called within app/bootstrap/app.php
+    * All middlewares class should be placed inside app/middlewares
+    * Slim instance available as $app
 
 file : app/bootstrap/app.php
 ```php
