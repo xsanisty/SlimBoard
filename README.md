@@ -6,7 +6,7 @@ and additional Sentry package.
 
 With Slim Facade to provide simple access to Slim API
 
-*** Installation ***
+####Installation
 Just clone or download zip from this repository, and run composer update
 
 ```
@@ -17,10 +17,10 @@ $git clone https://github.com/ikhsan017/SlimStarter.git
 composer update
 ```
 
-*** Configuration ***
+####Configuration
 all configuration should be placed in app/config directory
 
-*** Model ***
+####Model
 All models should be placed in app/models directory, since Eloquent is used as database provider, 
 you can write model like you write model for Laravel
 
@@ -29,7 +29,7 @@ file : app/models/Book.php
 class Book Extends Model{}
 ```
 
-*** Controller ***
+####Controller
 All controllers should be placed in app/controllers directory, you may extends the BaseController to get access to predefined helper
 
 file : app/controllers/HomeController.php
@@ -43,7 +43,7 @@ Class HomeController extends BaseController{
 }
 ```
 
-*** View ***
+####View
 All view files should be placed in app/views in twig format
 
 file : app/views/layout.twig
@@ -74,6 +74,6 @@ rendering view inside controller
 App::render('welcome.twig', array('title' => 'Welcome to SlimStarter'));
 ```
 
-*** Hooks and Middlewares ***
+####Hooks and Middlewares
 All hooks and middlewares should be called within app/bootstrap/app.php
 All middlewares class should be placed inside app/middlewares
