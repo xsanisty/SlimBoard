@@ -20,6 +20,63 @@ composer update
 ####Configuration
 all configuration should be placed in app/config directory
 
+####Routing
+All route configuration should be placed inside app/routes.php
+
+file : app/routes.php
+
+Route to closure
+```php
+Route::get('/', function(){
+    App::render('welcome.twig');
+});
+```
+
+Route to controller method
+```php
+/** get method */
+Route::get('/', 'SomeController:someMethod');
+
+/** post method */
+Route::post('/post', 'PostController:create');
+
+/** put method */
+Route::put('/post/:id', 'PostController:update');
+
+/** delete method */
+Route::delete('/post/:id', 'PostController:destroy');
+```
+
+Route Middleware
+```php
+/** route middleware */
+Route::get('/admin', function(){
+    //check user login or redirect
+}, 'AdminController:index');
+```
+
+Route group
+```php
+/** Route group */
+Route::group('/book', function(){
+    /** GET /book/ */
+    Route::get('/', 'BookController:index');
+
+    /** GET /book/:id */
+    Route::get('/:id', 'BookController:show');
+
+    /** GET /book/:id/edit */
+    Route::get('/:id/edit', 'BookController:edit');
+
+    /** PUT /book/:id */
+    Route::put('/:id', 'BookController:update');
+
+    /** DELETE /book/:id */
+    Route::delete('/:id', 'BookController:destroy');
+
+});
+```
+
 ####Model
 All models should be placed in app/models directory, since Eloquent is used as database provider, 
 you can write model like you write model for Laravel
