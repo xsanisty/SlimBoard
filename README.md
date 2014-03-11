@@ -17,6 +17,13 @@ $git clone https://github.com/ikhsan017/SlimStarter.git
 composer update
 ```
 
+You need to import sql file in case you want to use Sentry, the file is located in
+
+    vendor/cartalys/sentry/schema/mysql.sql
+
+to disable Sentry, simply remove it from composer.json, app/alias.php, app/bootstrap/start.php
+
+
 ####Configuration
 all configuration should be placed in app/config directory
 
