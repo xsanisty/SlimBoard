@@ -12,18 +12,15 @@ use Illuminate\Database\Capsule\Manager as Capsule;
  */
 $config = array();
 
-foreach (glob(APP_PATH.'config/*.php') as $filename) {
-    require $filename;
+foreach (glob(APP_PATH.'config/*.php') as $configFile) {
+    require $configFile;
 }
 
 
 /**
  * Initialize Slim application
  */
-$app = new Slim\Slim(array(
-    'view'              => new \Slim\Views\Twig(),
-    'templates.path'    => APP_PATH.'views'
-));
+$app = new Slim\Slim($config['app']);
 
 $app->add(new \Slim\Middleware\SessionCookie($config['cookie']));
 
@@ -47,7 +44,16 @@ $capsule->addConnection($config['database']);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
+/**
+ * Setting up Sentry
+ */
 Sentry::setupDatabaseResolver($capsule->connection()->getPdo());
+
+/**
+ * Setting up Slim
+ */
+require APP_PATH.'bootstrap/app.php';
+
 /**
  * Start the route
  */

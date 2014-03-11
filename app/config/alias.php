@@ -1,6 +1,8 @@
 <?php
 
 $config['alias'] = array(
+    'Slim'      => 'Slim\Slim',
+    'Middleware'=> 'Slim\Middleware',
     'Model'     => 'Illuminate\Database\Eloquent\Model',
     'Sentry'    => 'Cartalyst\Sentry\Facades\Native\Sentry',
     'App'       => 'SlimFacades\App',

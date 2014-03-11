@@ -1,5 +1,5 @@
 {
-    "name": "xsanisty/xpm",
+    "name": "xsanisty/SlimStarter",
     "require": {
         "slim/slim": "2.*",
         "slim/extras": "2.0.*",
@@ -16,7 +16,8 @@
     "autoload": {
         "classmap": [
             "app/controllers",
-            "app/models"
+            "app/models",
+            "app/middlewares"
         ]
     },
 
