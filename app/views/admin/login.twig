@@ -4,10 +4,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                {% if flash['message'] %}
+                {% if flash.message %}
                 <div class="alert alert-danger alert-dismissable" style="margin-top: 25px">
                     <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                    {{ flash['message'] }}
+                    {{ flash.message }}
                 </div>
                 {% endif %}
                 <div class="login-panel panel panel-default" style="margin-top:40px">

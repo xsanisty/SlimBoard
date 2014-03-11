@@ -5,7 +5,7 @@
  */
 
 /**
- * error hendling sample
+ * error handling sample
  *
  * $app->error(function() use ($app){
  *     $app->render('error.html');
