@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1cdf35e538d5dd9e9de35b678c14d37e",
+    "hash": "7b4c4a0e05c1482d57eaf0e626232007",
     "packages": [
         {
             "name": "cartalyst/sentry",
@@ -444,57 +444,6 @@
             "time": "2014-01-07 05:10:44"
         },
         {
-            "name": "slim/extras",
-            "version": "2.0.3",
-            "target-dir": "Slim/Extras",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/codeguy/Slim-Extras.git",
-                "reference": "a022ed23dae94e164000acd891e3394d903f9623"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/codeguy/Slim-Extras/zipball/a022ed23dae94e164000acd891e3394d903f9623",
-                "reference": "a022ed23dae94e164000acd891e3394d903f9623",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "slim/slim": ">=2.0.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Twig_Extensions_": "Views/Extension/",
-                    "Slim\\Extras": "."
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Andrew Smith",
-                    "email": "a.smith@silentworks.co.uk",
-                    "homepage": "http://thoughts.silentworks.co.uk/"
-                },
-                {
-                    "name": "Josh Lockhart",
-                    "email": "info@joshlockhart.com",
-                    "homepage": "http://www.joshlockhart.com/"
-                }
-            ],
-            "description": "Extras package for the Slim Framework",
-            "homepage": "http://github.com/codeguy/Slim-Extras",
-            "keywords": [
-                "extensions",
-                "middleware",
-                "templating"
-            ],
-            "time": "2013-01-07 17:56:10"
-        },
-        {
             "name": "slim/slim",
             "version": "2.4.2",
             "source": {
@@ -542,7 +491,7 @@
         },
         {
             "name": "slim/views",
-            "version": "0.1.1",
+            "version": "dev-master",
             "target-dir": "Slim/Views",
             "source": {
                 "type": "git",
@@ -709,6 +658,7 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
+        "slim/views": 20,
         "itsgoingd/slim-facades": 20
     },
     "platform": [

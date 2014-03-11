@@ -1,9 +1,8 @@
 {
     "name": "xsanisty/SlimStarter",
     "require": {
-        "slim/slim": "2.*",
-        "slim/extras": "2.0.*",
-        "slim/views":"0.1.*",
+        "slim/slim": "2.4.*",
+        "slim/views":"dev-master",
         "twig/twig": "1.*",
         "twig/extensions": "*",
         "itsgoingd/slim-facades": "dev-master",
