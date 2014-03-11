@@ -32,6 +32,8 @@ class Book Extends Model{}
 ####Controller
 All controllers should be placed in app/controllers directory, you may extends the BaseController to get access to predefined helper
 
+Slim instance available as $this->app
+
 file : app/controllers/HomeController.php
 ```php
 Class HomeController extends BaseController{
