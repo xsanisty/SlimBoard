@@ -75,5 +75,32 @@ App::render('welcome.twig', array('title' => 'Welcome to SlimStarter'));
 ```
 
 ####Hooks and Middlewares
-All hooks and middlewares should be called within app/bootstrap/app.php
-All middlewares class should be placed inside app/middlewares
+*All hooks and middlewares should be called within app/bootstrap/app.php
+*All middlewares class should be placed inside app/middlewares
+*Slim instance available as $app
+
+file : app/bootstrap/app.php
+```php
+$app->hook('slim.before.route', function(){
+    //do your hook
+});
+
+$app->add(new SomeActionMiddleware());
+```
+
+file : app/middlewares/SomeActionMiddleware.php
+```php
+class SomeActionMiddleware extends Middleware
+{
+    public function call()
+    {
+        // Get reference to application
+        $app = $this->app;
+
+        // Run inner middleware and application
+        $this->next->call();
+
+        // do your stuff
+    }
+}
+```

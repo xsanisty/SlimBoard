@@ -31,7 +31,9 @@ $view->parserExtensions = array(
     new \Slim\Views\TwigExtension(),
 );
 
-// initialize the Slim Facade class
+/**
+ * initialize the Slim Facade class
+ */
 Facade::setFacadeApplication($app);
 Facade::registerAliases($config['alias']);
 
@@ -50,7 +52,7 @@ $capsule->bootEloquent();
 Sentry::setupDatabaseResolver($capsule->connection()->getPdo());
 
 /**
- * Setting up Slim
+ * Setting up Slim hooks and middleware
  */
 require APP_PATH.'bootstrap/app.php';
 
