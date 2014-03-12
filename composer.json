@@ -1,7 +1,7 @@
 {
     "name": "xsanisty/slim-starter",
     "description": "Slim Framework in MVC environment with Eloquent as database provider and Twig as template engine",
-    "keywords": ["framework", "slim", "mvc", "eloquent", "twig"],
+    "keywords": ["framework", "slim", "mvc", "eloquent", "twig", "slim-starter"],
     "license": "MIT",
     "require": {
         "php": ">= 5.3.0",

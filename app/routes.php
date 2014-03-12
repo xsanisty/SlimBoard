@@ -23,6 +23,11 @@ Route::get('/logout', 'Admin\AdminController:logout')->name('logout');
 Route::post('/login', 'Admin\AdminController:doLogin');
 
 /**
+ * Route to documentation
+ */
+Route::get('/doc(/:page+)', 'DocController:index');
+
+/**
  * default routing
  */
 Route::get('/', 'HomeController:welcome');

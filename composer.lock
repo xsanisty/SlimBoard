@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e909d00b0bcc17d0ebfd4d21de51409a",
+    "hash": "5a1727590ae6961d73eda5fbe40c57fc",
     "packages": [
         {
             "name": "cartalyst/sentry",
@@ -107,21 +107,21 @@
         },
         {
             "name": "illuminate/container",
-            "version": "dev-master",
+            "version": "v4.1.23",
             "target-dir": "Illuminate/Container",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "aad26110ba0a1577e72b9588a0441aa27cec1ddd"
+                "reference": "80383d49aa1c31f36c95abe582eb8fc779a996fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/aad26110ba0a1577e72b9588a0441aa27cec1ddd",
-                "reference": "aad26110ba0a1577e72b9588a0441aa27cec1ddd",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/80383d49aa1c31f36c95abe582eb8fc779a996fc",
+                "reference": "80383d49aa1c31f36c95abe582eb8fc779a996fc",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": ">=5.3.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "3.7.*"
@@ -129,7 +129,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.1-dev"
                 }
             },
             "autoload": {
@@ -149,43 +149,43 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-02-26 21:37:09"
+            "time": "2014-02-26 18:55:58"
         },
         {
             "name": "illuminate/database",
-            "version": "dev-master",
+            "version": "v4.1.23",
             "target-dir": "Illuminate/Database",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "5140981e84352363b7236a4df84043a9fa4ac621"
+                "reference": "d695cb6fa8d05501ba402e16d63fce77b5f29f69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/5140981e84352363b7236a4df84043a9fa4ac621",
-                "reference": "5140981e84352363b7236a4df84043a9fa4ac621",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/d695cb6fa8d05501ba402e16d63fce77b5f29f69",
+                "reference": "d695cb6fa8d05501ba402e16d63fce77b5f29f69",
                 "shasum": ""
             },
             "require": {
-                "illuminate/container": "4.2.*",
-                "illuminate/events": "4.2.*",
-                "illuminate/support": "4.2.*",
+                "illuminate/container": "4.1.*",
+                "illuminate/events": "4.1.*",
+                "illuminate/support": "4.1.*",
                 "nesbot/carbon": "1.*",
-                "php": ">=5.4.0"
+                "php": ">=5.3.0"
             },
             "require-dev": {
-                "illuminate/cache": "4.2.*",
-                "illuminate/console": "4.2.*",
-                "illuminate/filesystem": "4.2.*",
-                "illuminate/pagination": "4.2.*",
-                "illuminate/support": "4.2.*",
+                "illuminate/cache": "4.1.*",
+                "illuminate/console": "4.1.*",
+                "illuminate/filesystem": "4.1.*",
+                "illuminate/pagination": "4.1.*",
+                "illuminate/support": "4.1.*",
                 "mockery/mockery": "0.9.*",
                 "phpunit/phpunit": "3.7.*"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.1-dev"
                 }
             },
             "autoload": {
@@ -211,27 +211,27 @@
                 "orm",
                 "sql"
             ],
-            "time": "2014-03-09 18:42:31"
+            "time": "2014-02-28 20:28:45"
         },
         {
             "name": "illuminate/events",
-            "version": "dev-master",
+            "version": "v4.1.23",
             "target-dir": "Illuminate/Events",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
-                "reference": "736dfc7df80fd87623efd464a6dfaeeed08a3f1a"
+                "reference": "357150eeb29fb9248e0c5fd464098955a61dcbcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/events/zipball/736dfc7df80fd87623efd464a6dfaeeed08a3f1a",
-                "reference": "736dfc7df80fd87623efd464a6dfaeeed08a3f1a",
+                "url": "https://api.github.com/repos/illuminate/events/zipball/357150eeb29fb9248e0c5fd464098955a61dcbcc",
+                "reference": "357150eeb29fb9248e0c5fd464098955a61dcbcc",
                 "shasum": ""
             },
             "require": {
-                "illuminate/container": "4.2.*",
-                "illuminate/support": "4.2.*",
-                "php": ">=5.4.0"
+                "illuminate/container": "4.1.*",
+                "illuminate/support": "4.1.*",
+                "php": ">=5.3.0"
             },
             "require-dev": {
                 "mockery/mockery": "0.9.*",
@@ -240,7 +240,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.1-dev"
                 }
             },
             "autoload": {
@@ -260,25 +260,25 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-02-25 18:34:24"
+            "time": "2014-02-15 09:27:21"
         },
         {
             "name": "illuminate/support",
-            "version": "dev-master",
+            "version": "v4.1.23",
             "target-dir": "Illuminate/Support",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "e22504b78685b08edfe3744984bf58f14d778cc1"
+                "reference": "3134bebb9997be4963b320da8b7db2752d7cb937"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/e22504b78685b08edfe3744984bf58f14d778cc1",
-                "reference": "e22504b78685b08edfe3744984bf58f14d778cc1",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/3134bebb9997be4963b320da8b7db2752d7cb937",
+                "reference": "3134bebb9997be4963b320da8b7db2752d7cb937",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": ">=5.3.0"
             },
             "require-dev": {
                 "jeremeamia/superclosure": "1.0.*",
@@ -289,7 +289,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.1-dev"
                 }
             },
             "autoload": {
@@ -312,11 +312,11 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-03-07 10:32:53"
+            "time": "2014-02-27 21:11:13"
         },
         {
             "name": "ircmaxell/password-compat",
-            "version": "1.0.x-dev",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ircmaxell/password_compat.git",
@@ -545,20 +545,20 @@
         },
         {
             "name": "twig/extensions",
-            "version": "dev-master",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig-extensions.git",
-                "reference": "502303198afc1ec0bcc061c6f3a0926f7eb685e3"
+                "reference": "f91a82ec225e5bb108e01a0f93c9be04f84dcfa0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/502303198afc1ec0bcc061c6f3a0926f7eb685e3",
-                "reference": "502303198afc1ec0bcc061c6f3a0926f7eb685e3",
+                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/f91a82ec225e5bb108e01a0f93c9be04f84dcfa0",
+                "reference": "f91a82ec225e5bb108e01a0f93c9be04f84dcfa0",
                 "shasum": ""
             },
             "require": {
-                "twig/twig": "~1.12"
+                "twig/twig": "~1.0"
             },
             "type": "library",
             "extra": {
@@ -590,20 +590,20 @@
                 "i18n",
                 "text"
             ],
-            "time": "2014-03-01 02:53:07"
+            "time": "2013-10-18 19:37:15"
         },
         {
             "name": "twig/twig",
-            "version": "dev-master",
+            "version": "v1.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "8c5844a56fe5cbe13ef3becd9ed9f7b3ade104a2"
+                "reference": "1fb5784662f438d7d96a541e305e28b812e2eeed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/8c5844a56fe5cbe13ef3becd9ed9f7b3ade104a2",
-                "reference": "8c5844a56fe5cbe13ef3becd9ed9f7b3ade104a2",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/1fb5784662f438d7d96a541e305e28b812e2eeed",
+                "reference": "1fb5784662f438d7d96a541e305e28b812e2eeed",
                 "shasum": ""
             },
             "require": {
@@ -647,7 +647,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-02-24 15:39:56"
+            "time": "2014-02-13 10:19:29"
         }
     ],
     "packages-dev": [
@@ -656,7 +656,7 @@
     "aliases": [
 
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": {
         "itsgoingd/slim-facades": 20
     },

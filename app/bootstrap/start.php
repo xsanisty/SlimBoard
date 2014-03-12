@@ -23,11 +23,9 @@ foreach (glob(APP_PATH.'config/*.php') as $configFile) {
 $app = new Slim\Slim($config['app']);
 
 $app->add(new \Slim\Middleware\SessionCookie($config['cookie']));
+$app->view()->parserOptions = $config['twig'];
 
-$view = $app->view();
-$view->parserOptions = $config['twig'];
-
-$view->parserExtensions = array(
+$app->view()->parserExtensions = array(
     new \Slim\Views\TwigExtension(),
 );
 
@@ -41,15 +39,18 @@ Facade::registerAliases($config['alias']);
 /**
  * Boot up Eloquent
  */
-$capsule = new Capsule;
-$capsule->addConnection($config['database']);
-$capsule->setAsGlobal();
-$capsule->bootEloquent();
+$app->container->singleton('db',function(){
+    return new Capsule;
+});
+
+$app->db->addConnection($config['database']);
+$app->db->setAsGlobal();
+$app->db->bootEloquent();
 
 /**
  * Setting up Sentry
  */
-Sentry::setupDatabaseResolver($capsule->connection()->getPdo());
+Sentry::setupDatabaseResolver($app->db->connection()->getPdo());
 
 /**
  * Setting up Slim hooks and middleware

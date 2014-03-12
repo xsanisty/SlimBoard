@@ -217,10 +217,9 @@ class BaseController{
      */
     protected function loadBaseCss()
     {
-        $this->loadCss('bootstrap.min.css');
-        $this->loadCss('bootstrap-responsive.css');
-        $this->loadCss('main.css');
-        $this->loadCss('home.css');
+        $this->loadCss("bootstrap.min.css");
+        $this->loadCss("font-awesome.min.css");
+        $this->loadCss("sb-admin.css");
     }
 
     /**
@@ -228,11 +227,9 @@ class BaseController{
      */
     protected function loadBaseJs()
     {
-        $this->loadJs('vendor/modernizr-2.6.2-respond-1.1.0.min.js');
-        $this->loadJs('vendor/jquery-1.9.1.min.js');
-        $this->loadJs('vendor/bootstrap.min.js');
-        $this->loadJs('plugins.js');
-        $this->loadJs('app/tracker.js');
+        $this->loadJs("jquery-1.10.2.js");
+        $this->loadJs("bootstrap.min.js");
+        $this->loadJs("plugins/metisMenu/jquery.metisMenu.js");
     }
 
     /**

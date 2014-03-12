@@ -2,34 +2,31 @@
 <html>
 <head>
     <base href="{{ baseUrl }}" />
-    <title>Welcome to Slim Starter Application</title>
+    <title>{{ title }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Core CSS - Include with every page -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/css/sb-admin.css" rel="stylesheet">
+    {% for cssfile in css.external %}
+    <link rel="stylesheet" href="{{cssfile}}" />
+    {% endfor %}
+
+    {% for cssfile in css.internal %}
+    <link rel="stylesheet" href="{{assetUrl}}css/{{cssfile}}" />
+    {% endfor %}
 </head>
 <body>
-    {% block body %}
-        <div id="wrapper">
-            {{include('topbar.twig')}}
-            {{include('sidebar.twig')}}
-
-            <div id="page-wrapper">
-                {% block content %}{% endblock %}
-            </div>
-            <!-- /#page-wrapper -->
-
-        </div>
-        <!-- /#wrapper -->
-    {% endblock %}
+    {% block body %}{% endblock %}
 
     <!-- Core Scripts - Include with every page -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    {% for jsfile in js.external %}
+    <script src="{{jsfile}}"></script>
+    {% endfor %}
+
+    {% for jsfile in js.internal %}
+    <script src="{{assetUrl}}js/{{jsfile}}"></script>
+    {% endfor %}
 
     <!-- Page-Level Plugin Scripts - Blank -->
 

@@ -1,11 +1,20 @@
 {% extends 'master.twig' %}
 
-{% block content %}
-    <div class="row">
-        <div class="col-lg-12">
-            <h3 class="page-header">{{ title }}</h3>
+{% block body %}
+    <div id="wrapper">
+        {{include('admin/topbar.twig')}}
+        {{include('admin/sidebar.twig')}}
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header">{{ title }}</h3>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
         </div>
-        <!-- /.col-lg-12 -->
+        <!-- /#page-wrapper -->
+
     </div>
-    <!-- /.row -->
+    <!-- /#wrapper -->
 {% endblock %}

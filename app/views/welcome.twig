@@ -1,11 +1,21 @@
 {% extends 'master.twig' %}
 
-{% block content %}
+{% block body %}
+<div class="container">
     <div class="row">
-        <div class="col-lg-12">
-            <h3 class="page-header">{{ title }}</h3>
+        <div class="col-lg-12 text-center">
+            <h3 class="page-header">Welcome to SlimStarter</h3>
+            <p>Working with Slim in MVC environment</p>
+        </div>
+        <div class="col-lg-6">
+            <a href="{{siteUrl('doc')}}" class="btn btn-primary pull-right">Read the Documentation</a>
+        </div>
+        <div class="col-lg-6">
+            <a href="{{siteUrl('login')}}" class="btn btn-success">Login to Dashboard Page</a>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
+</div>
+<!-- /.container -->
 {% endblock %}
