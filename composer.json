@@ -9,7 +9,7 @@
         "slim/views":"0.1.*",
         "twig/twig": "1.*",
         "twig/extensions": "*",
-        "itsgoingd/slim-facades": "*",
+        "itsgoingd/slim-facades": "dev-master",
         "illuminate/database" : "4.*",
         "cartalyst/sentry" : "2.*",
         "ircmaxell/password-compat": "1.0.*"
@@ -29,6 +29,5 @@
             "homepage":"http://www.xsanisty.com/project/slimstarter",
             "role": "developer"
         }
-    ],
-    "minimum-stability": "dev"
+    ]
 }
