@@ -1,5 +1,5 @@
 {
-    "name": "xsanisty/SlimStarter",
+    "name": "xsanisty/slimstarter",
     "description": "Slim Framework in MVC environment with Eloquent as database provider and Twig as template engine",
     "keywords": ["framework", "slim", "mvc", "eloquent", "twig"],
     "license": "MIT",
