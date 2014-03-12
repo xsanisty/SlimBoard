@@ -191,7 +191,7 @@ class BaseController{
     /**
      * addMessage to be viewd in the view file
      */
-    public function addMessage($message, $type='info')
+    public function message($message, $type='info')
     {
         $this->data['message'][$type] = $message;
     }
@@ -199,7 +199,7 @@ class BaseController{
     /** 
      * register global variable to be accessed via javascript
      */
-    public function registerGlobal($key,$val)
+    public function publish($key,$val)
     {
         $this->data['global'][$key] =  $val;
     }
@@ -235,26 +235,11 @@ class BaseController{
         $this->loadJs('app/tracker.js');
     }
 
-
-    /**
-     * load jquery validation engine
-     */
-    protected function enableValidation()
-    {
-        $this->loadJs('vendor/jquery.validationEngine.js');
-        $this->loadJs('vendor/languages/jquery.validationEngine-en.js');
-        $this->loadCss('jquery.validationEngine.css');
-    }
-
     /**
      * generate base URL
      */
     protected function baseUrl(){
-        $protocol   = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-        $domain     = $_SERVER['HTTP_HOST'];
-        $path       = dirname($_SERVER['SCRIPT_NAME']).'/';
-
-        return $protocol.$domain.$path;
+        return Request::getUrl().Request::getRootUri().'/';
     }
 
     /**
