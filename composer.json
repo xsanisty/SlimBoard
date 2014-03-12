@@ -1,8 +1,12 @@
 {
     "name": "xsanisty/SlimStarter",
+    "description": "Slim Framework in MVC environment with Eloquent as database provider and Twig as template engine",
+    "keywords": ["framework", "slim", "mvc", "eloquent", "twig"],
+    "license": "MIT",
     "require": {
+        "php": ">= 5.3.0",
         "slim/slim": "2.4.*",
-        "slim/views":"dev-master",
+        "slim/views":"0.1.*",
         "twig/twig": "1.*",
         "twig/extensions": "*",
         "itsgoingd/slim-facades": "dev-master",
@@ -11,7 +15,6 @@
         "ircmaxell/password-compat": "1.0.*"
         
     },
-
     "autoload": {
         "classmap": [
             "app/controllers",
@@ -19,11 +22,13 @@
             "app/middlewares"
         ]
     },
-
     "authors": [
         {
             "name": "Ikhsan Agustian",
-            "email": "ikhsan017@gmail.com"
+            "email": "ikhsan017@gmail.com",
+            "homepage":"http://www.xsanisty.com/project/slimstarter",
+            "role": "developer"
         }
-    ]
+    ],
+    "minimum-stability": "dev"
 }
