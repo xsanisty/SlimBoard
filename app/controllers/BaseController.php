@@ -191,7 +191,7 @@ class BaseController{
     /**
      * addMessage to be viewd in the view file
      */
-    public function message($message, $type='info')
+    protected function message($message, $type='info')
     {
         $this->data['message'][$type] = $message;
     }
@@ -199,15 +199,22 @@ class BaseController{
     /** 
      * register global variable to be accessed via javascript
      */
-    public function publish($key,$val)
+    protected function publish($key,$val)
     {
         $this->data['global'][$key] =  $val;
     }
 
     /**
+     * remove published variable from registry
+     */
+    protected function unpublish($key){
+        unset($this->data['global'][$key]);
+    }
+
+    /**
      * add custom meta tags to the page
      */
-    public function meta($name, $content)
+    protected function meta($name, $content)
     {
         $this->data['meta'][$name] = $content;
     }
