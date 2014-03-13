@@ -7,6 +7,10 @@ with Laravel's Eloquent as database provider (Model) and Twig as template engine
 Additional package is Sentry as authentication provider and Slim-facade which provide easy access to underlying Slim API 
 with static interface like Laravel syntax (built based on Laravel's Facade)
 
+####Showcase
+You can test SlimStarter in live site by visiting here (shared hosting) http://slim-starter.xsanisty.com 
+with username ```admin@admin.com``` and password ```password```
+
 
 ####Installation
 To install SlimStarter, you just need to clone or download zip from this repository, and run composer update
@@ -126,7 +130,8 @@ to remove all queued js or css file.
 ```php
 /**  
  * load local js file located in public/assets/js/application.js
- * by default, it will be placed in the last list, to modify it, use position option in second parameter
+ * by default, it will be placed in the last list, 
+ * to modify it, use position option in second parameter
  * array(
  *      'position' => 'last|first|after:file|before:file'
  * )
@@ -149,7 +154,7 @@ $this->removeJs('user.js');
 $this->resetJs();
 
 
-/** load local js file located in public/assets/css/style.js */
+/** load local css file located in public/assets/css/style.css */
 $this->loadCss('style.css')
 
 /** load external css file, eg: js in CDN */
