@@ -182,7 +182,9 @@ console.log(global.user);
 
 ####View
 Views file are located in ```app/views``` directory in twig format, there is master.twig with 'body' block as default master template 
-shipped with SlimStarer that will provide default access to published js variable 
+shipped with SlimStarer that will provide default access to published js variable.
+
+For detailed Twig documentation, please refer to http://twig.sensiolabs.org/documentation
 
 
 file : app/views/welcome.twig
