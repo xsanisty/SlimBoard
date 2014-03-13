@@ -80,7 +80,7 @@ class UserController extends \BaseController{
             $input = Input::put();
 
             if($input['password'] != $input['confirm_password']){
-                throw new Exception("Password and confirmation password not match", 1);
+                throw new \Exception("Password and confirmation password not match", 1);
             }
 
             $user = Sentry::findUserById($id);

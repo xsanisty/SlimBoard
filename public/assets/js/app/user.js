@@ -1,4 +1,16 @@
 $(function(){
+    /**
+     * all response will be in below format
+     * {
+     *     success : boolean,
+     *     data : {resource_object},
+     *     message : string or null
+     * }
+     */
+
+    /**
+     * reset the form and show it!
+     */
     $('#btn-user-add').click(function(e){
         e.preventDefault();
         $('#user-form-data').each(function(){
@@ -8,6 +20,9 @@ $(function(){
         $('#user-modal').modal('show');
     });
 
+    /**
+     * sen GET request to display resource with specific id, and display it in modal form
+     */
     $('#user-table').on('click', '.btn-user-edit', function(e){
         var $userid = $(this).attr('data-id');
         $.get(global.baseUrl+'admin/user/'+$userid, function(resp){
@@ -53,7 +68,9 @@ $(function(){
     });
 
     /** 
-     * send post request to save data to resource server
+     * send POST request to save data to resource server
+     * or send PUT request to update data on resource server
+     * based on data-method value
      */
     $('#btn-user-save').click(function(e){
         e.preventDefault();
@@ -61,8 +78,6 @@ $(function(){
         var $userdata = $('#user-form-data').serialize();
         var $method = $(this).attr('data-method');
         var $url = ($method == 'POST') ? global.baseUrl+'admin/user' : global.baseUrl+'admin/user/'+$('#user_id').val();
-
-        console.log($userdata);
 
         $.ajax({
             url: $url,
