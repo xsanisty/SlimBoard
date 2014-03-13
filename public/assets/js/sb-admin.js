@@ -11,5 +11,7 @@ $(function() {
         } else {
             $('div.sidebar-collapse').removeClass('collapse');
         }
+
+        $('#page-wrapper').css('min-height', $(this).height() - $('.navbar').outerHeight());
     });
 });

@@ -1,0 +1,13 @@
+.page-header-box  h3, .page-header-box  a{
+    margin-top:15px;
+    border-bottom: none;
+}
+
+.page-header-box{
+    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 20px;
+}
+
+#page-wrapper{
+    min-height: 0;
+}

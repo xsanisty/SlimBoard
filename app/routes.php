@@ -15,6 +15,19 @@ Route::group(
          * sample namespaced controller
          */
         Route::get('/', 'Admin\AdminController:index')->name('admin');
+
+        /**
+         * grouping user inside admin group to indicate resource
+         */
+        Route::group('/user', function(){
+            Route::get('/', 'Admin\UserController:index');
+            Route::get('/page/:page', 'Admin\UserController:index');
+            Route::post('/', 'Admin\UserController:store');
+            Route::get('/:id', 'Admin\UserController:show');
+            Route::put('/:id', 'Admin\UserController:update');
+            Route::get('/:id/edit', 'Admin\UserController:edit');
+            Route::delete('/:id', 'Admin\UserController:destroy');
+        });
     }
 );
 

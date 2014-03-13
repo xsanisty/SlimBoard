@@ -28,8 +28,15 @@
                                         <input name="remember" type="checkbox" value="Remember Me">Remember Me
                                     </label>
                                 </div>
-                                <!-- Change this to a button or input when using this as a form -->
-                                <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
+
+                                <div class="form-group">
+                                    <div class="col-md-6 text-center">
+                                        <button type="submit" class="btn btn-md btn-success btn-block">Login</button>
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                        <a href="{{siteUrl('/')}}" class="btn btn-md btn-danger btn-block">Cancel</a>
+                                    </div>
+                                </div>
                             </fieldset>
                         </form>
                     </div>

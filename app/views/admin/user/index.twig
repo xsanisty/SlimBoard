@@ -1,0 +1,48 @@
+{% extends 'admin/index.twig' %}
+{% block content %}
+<div class="row page-header-box">
+    <div class="col-lg-10">
+        <h3>{{ title }}</h3>
+    </div>
+    <div class="col-lg-2">
+        <a href="#" id="btn-user-add" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i> Add User</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email Address</th>
+                        <th style="width:15%" class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="user-table">
+                    {% for user in users %}
+                    <tr id="user-row-{{ user.id }}">
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.first_name }}</td>
+                        <td>{{ user.last_name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            <div class="dropdown text-center">
+                                <a class="btn btn-primary btn-sm" href="#" data-toggle="dropdown">Action <b class="caret"></b></a>
+                                <ul aria-labelledby="dLabel" role="menu" class="dropdown-menu pull-right">
+                                    <li class="text-left"><a data-id="{{ user.id }}" class="btn-user-edit" href="#">Edit</a></li>
+                                    <li class="text-left"><a data-id="{{ user.id }}" class="btn-user-delete" href="#">Remove</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% include 'admin/user/form.twig' %}
+{% endblock %}

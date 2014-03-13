@@ -1,5 +1,3 @@
 <?php
 
-class User extends Model {
-    protected $table = 'users';
-}
+class User extends Model {}

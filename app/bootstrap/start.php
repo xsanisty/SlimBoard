@@ -35,7 +35,6 @@ $app->view()->parserExtensions = array(
 Facade::setFacadeApplication($app);
 Facade::registerAliases($config['alias']);
 
-
 /**
  * Boot up Eloquent
  */
