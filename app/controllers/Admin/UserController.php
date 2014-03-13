@@ -19,10 +19,6 @@ class UserController extends \BaseController{
         $this->data['title'] = 'Users List';
         $this->data['users'] = User::where('id', '<>', $user->id)->get()->toArray();
 
-        /** load angular.js library */
-        $this->loadJs('https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.1/angular.min.js', array('location' => 'external'));
-        $this->loadJs('https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.1/angular-resource.min.js', array('location' => 'external'));
-        
         /** load the user.js app */
         $this->loadJs('app/user.js');
 
