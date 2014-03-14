@@ -49,7 +49,8 @@ class UserController extends \BaseController{
                 array(
                     'success'   => !is_null($user),
                     'data'      => !is_null($user) ? $user->toArray() : false,
-                    'message'   => $message
+                    'message'   => $message,
+                    'code'      => is_null($user) ? 404 : 200
                 )
             ));
         }else{
@@ -103,7 +104,8 @@ class UserController extends \BaseController{
                 array(
                     'success'   => $success,
                     'data'      => ($user) ? $user->toArray() : null,
-                    'message'   => $message
+                    'message'   => $message,
+                    'code'      => is_null($user) ? 404 : 200
                 )
             ));
         }else{
@@ -146,7 +148,8 @@ class UserController extends \BaseController{
                 array(
                     'success'   => $success,
                     'data'      => ($user) ? $user->toArray() : null,
-                    'message'   => $message
+                    'message'   => $message,
+                    'code'      => $success ? 200 : 500
                 )
             ));
         }else{
@@ -158,16 +161,31 @@ class UserController extends \BaseController{
      * destroy resource with specific id
      */
     public function destroy($id){
-        $id = (int) $id;
+        $id      = (int) $id;
+        $deleted = false;
+        $message = '';
+        $code    = 0;
 
-        $destroyed = User::destroy($id);
+        try{
+            $user    = Sentry::findUserById($id);
+            $deleted = $user->delete();
+            $code    = 200;
+        }catch(\Cartalyst\Sentry\Users\UserNotFoundException $e){
+            $message = $e->getMessage();
+            $code    = 404;
+        }catch(\Exception $e){
+            $message = $e->getMessage();
+            $code    = 500;
+        }
 
         if(Request::isAjax()){
             Response::headers()->set('Content-Type', 'application/json');
             Response::setBody(json_encode(
                 array(
-                    'success'   => $destroyed,
-                    'id'        => $id
+                    'success'   => $deleted,
+                    'id'        => $id,
+                    'message'   => $message,
+                    'code'      => $code
                 )
             ));
         }else{

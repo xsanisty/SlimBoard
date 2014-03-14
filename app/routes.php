@@ -13,7 +13,8 @@ Route::group(
                 Response::setBody(json_encode(
                     array(
                         'success'   => false,
-                        'message'   => 'Session expired, Please refresh the page to login again'
+                        'message'   => 'Session expired or unauthorized access.',
+                        'code'      => 401
                     )
                 ));
                 App::stop();

@@ -41,6 +41,9 @@ $(function(){
                 $('#user-modal').modal('show');
             }else{
                 alert(resp.message);
+                if(resp.code == 401){
+                    location.reload();
+                }
             }
         });
     });
@@ -58,9 +61,14 @@ $(function(){
                 data   : {
                     id : $userid
                 },
-                success : function(response){
-                    if(response.success){
+                success : function(resp){
+                    if(resp.success){
                         $('#user-row-'+$userid).remove();
+                    }else{
+                        alert(resp.message);
+                        if(resp.code == 401){
+                            location.reload();
+                        }
                     }
                 }
             });
@@ -121,6 +129,9 @@ $(function(){
                     $('#user-modal').modal('hide');
                 }else{
                     alert(resp.message);
+                    if(resp.code == 401){
+                        location.reload();
+                    }
                 }
             }
         });
