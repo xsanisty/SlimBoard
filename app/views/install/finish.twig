@@ -1,0 +1,36 @@
+{% extends 'master.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h3 class="page-header">SlimStarter is Ready</h3>
+        </div>
+        <div class="col-lg-6 col-lg-offset-3">
+            <p class="text-center">
+                you can now login to the dashboard with following credential
+            </p>
+        </div>
+        <div class="col-lg-4 col-lg-offset-4">
+            <ul>
+                <li>Username : admin@admin.com</li>
+                <li>Password : password</li>
+            </ul>
+        </div>
+        <div class="col-lg-6 col-lg-offset-3">
+            <p class="text-center">
+                Please remove app/public/install.php for security purpose
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <a href="{{baseUrl}}doc" class="btn btn-primary pull-right">Read the Documentation</a>
+        </div>
+        <div class="col-lg-6">
+            <a href="{{baseUrl}}login" class="btn btn-success">Login to Dashboard Page</a>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+{% endblock %}

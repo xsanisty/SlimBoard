@@ -34,8 +34,10 @@ $app->hook('slim.before', function() use ($app, $config){
          */
         Sentry::setupDatabaseResolver($app->db->connection()->getPdo());
     }catch(PDOException $e){
-        if(file_exists(PUBLIC_PATH.'install.php')){
-            $installPath = Request::getUrl().Request::getRootUri().'/install.php';
+        if(file_exists(PUBLIC_PATH.'install.php') && defined('INSTALL')){
+
+            $publicPath  = dirname($_SERVER['SCRIPT_NAME']).'/';
+            $installPath = Request::getUrl().$publicPath.'install.php';
             Response::redirect($installPath);
         }else{
             $app->error();
