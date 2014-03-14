@@ -2,6 +2,7 @@
 
 define('VENDOR_PATH', __DIR__.'/../../vendor/');
 define('APP_PATH', __DIR__.'/../../app/');
+define('PUBLIC_PATH', __DIR__.'/../../public/');
 
 require VENDOR_PATH.'autoload.php';
 use SlimFacades\Facade;
@@ -35,30 +36,17 @@ $app->view()->parserExtensions = array(
 Facade::setFacadeApplication($app);
 Facade::registerAliases($config['alias']);
 
-/**
- * Boot up Eloquent
- */
-$app->container->singleton('db',function(){
-    return new Capsule;
-});
+if(!defined('INSTALL')){
 
-$app->db->addConnection($config['database']);
-$app->db->setAsGlobal();
-$app->db->bootEloquent();
+    /**
+     * Setting up Slim hooks and middleware
+     */
+    require APP_PATH.'bootstrap/app.php';
 
-/**
- * Setting up Sentry
- */
-Sentry::setupDatabaseResolver($app->db->connection()->getPdo());
-
-/**
- * Setting up Slim hooks and middleware
- */
-require APP_PATH.'bootstrap/app.php';
-
-/**
- * Start the route
- */
-require APP_PATH.'routes.php';
+    /**
+     * Start the route
+     */
+    require APP_PATH.'routes.php';
+}
 
 return $app;
