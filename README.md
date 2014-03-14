@@ -5,37 +5,37 @@ SlimStarter is a bootstrap application built with Slim Framework in MVC architec
 with Laravel's Eloquent as database provider (Model) and Twig as template engine (View).
 
 Additional package is Sentry as authentication provider and Slim-facade which provide easy access to underlying Slim API 
-with static interface like Laravel syntax (built based on Laravel's Facade)
+with static interface like Laravel syntax (built based on Laravel's Facade).
 
 ####Showcase
 You can test SlimStarter in live site by visiting here (shared hosting) http://slim-starter.xsanisty.com 
-with username ```admin@admin.com``` and password ```password```
+with username ```admin@admin.com``` and password ```password```.
 
 
 ####Installation
-You can install SlimStarter by cloning this repository or download the zip file from this repository, and then run ```composer update```
 
-#####1 Clone Repository or Download Zip
+#####1 Manual Install
+You can manually install SlimStarter by cloning this repo or download the zip file from this repo, and run ```composer install```.
 ```
-$git clone https://github.com/ikhsan017/SlimStarter.git
+$git clone https://github.com/ikhsan017/SlimStarter.git .
+$composer install
 ```
 
-#####2 Install Deendency via Composer
-Run ```composer install``` to install the depenndency, or you can use ```composer create-project``` to install SlimStarter 
-without downloading zip or cloning this repository
+#####2 Install via ```composer create-project```
+Alternatively, you can use ```composer create-project``` to install SlimStarter without downloading zip or cloning this repo.
 
 ```
 composer create-project xsanisty/slim-starter
 ```
 
-#####Setup Permission
-After ```composer install``` you need to change file and folder permission
+#####3 Setup Permission
+After composer finished install the dependencies, you need to change file and folder permission.
 ```
 chmod 777 -R app/storage/
 chmod 666 app/config/database.php
 ```
 
-#####Configure and Setup Database
+#####4 Configure and Setup Database
 You can now access the installer by pointing install.php in your browser
 ```
 http://localhost/path/to/SlimStarter/public/install.php
