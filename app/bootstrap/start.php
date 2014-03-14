@@ -6,7 +6,6 @@ define('PUBLIC_PATH', __DIR__.'/../../public/');
 
 require VENDOR_PATH.'autoload.php';
 use SlimFacades\Facade;
-use Illuminate\Database\Capsule\Manager as Capsule;
 
 /**
  * Load the configuration
