@@ -246,7 +246,8 @@ class BaseController{
      * generate base URL
      */
     protected function baseUrl(){
-        return Request::getUrl().Request::getRootUri().'/';
+        $path       = dirname($_SERVER['SCRIPT_NAME']).'/';
+        return Request::getUrl().$path;
     }
 
     /**
