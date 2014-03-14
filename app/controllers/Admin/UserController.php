@@ -8,8 +8,11 @@ use \Sentry;
 use \Request;
 use \Response;
 use \Input;
+use \Exception;
+use \Cartalyst\Sentry\Users\UserNotFoundException;
+use \BaseController;
 
-class UserController extends \BaseController{
+class UserController extends BaseController{
 
     /**
      * display list of resource
@@ -39,7 +42,7 @@ class UserController extends \BaseController{
 
             try{
                 $user = Sentry::findUserById($id);
-            }catch(\Exception $e){
+            }catch(Exception $e){
                 $message = $e->getMessage();
             }
 
@@ -48,7 +51,7 @@ class UserController extends \BaseController{
             Response::setBody(json_encode(
                 array(
                     'success'   => !is_null($user),
-                    'data'      => !is_null($user) ? $user->toArray() : false,
+                    'data'      => !is_null($user) ? $user->toArray() : $user,
                     'message'   => $message,
                     'code'      => is_null($user) ? 404 : 200
                 )
@@ -62,7 +65,13 @@ class UserController extends \BaseController{
      * show edit from resource with specific id
      */
     public function edit($id){
-        echo 'edit user with id '.$id;
+        try{
+            $user = Sentry::findUserById($id);
+        }catch(UserNotFoundException $e){
+            App::notFound();
+        }catch(Exception $e){
+            App::error();
+        }
     }
 
     /**
@@ -71,31 +80,37 @@ class UserController extends \BaseController{
     public function update($id){
         $success = false;
         $message = '';
-        $user = null;
-        try
-        {
+        $user    = null;
+        $code    = 0;
+
+        try{
             $input = Input::put();
+            /** in case request come from post http form */
+            $input = is_null($input) ? Input::post() : $input;
 
             if($input['password'] != $input['confirm_password']){
-                throw new \Exception("Password and confirmation password not match", 1);
+                throw new Exception("Password and confirmation password not match", 1);
             }
 
             $user = Sentry::findUserById($id);
 
-            $user->email = $input['email'];
-            $user->first_name = $input['first_name'];
-            $user->last_name = $input['last_name'];
+            $user->email        = $input['email'];
+            $user->first_name   = $input['first_name'];
+            $user->last_name    = $input['last_name'];
 
             if($input['password']){
                 $user->password = $input['password'];
             }
 
             $success = $user->save();
-        }
-        catch (\Exception $e)
-        {
-            $success = false;
+            $code    = 200;
+            $message = 'User updated sucessully';
+        }catch(UserNotFoundException $e){
             $message = $e->getMessage();
+            $code    = 404;
+        }catch (Exception $e){
+            $message = $e->getMessage();
+            $code    = 500;
         }
 
         if(Request::isAjax()){
@@ -103,9 +118,9 @@ class UserController extends \BaseController{
             Response::setBody(json_encode(
                 array(
                     'success'   => $success,
-                    'data'      => ($user) ? $user->toArray() : null,
+                    'data'      => ($user) ? $user->toArray() : $user,
                     'message'   => $message,
-                    'code'      => is_null($user) ? 404 : 200
+                    'code'      => $code
                 )
             ));
         }else{
@@ -117,14 +132,15 @@ class UserController extends \BaseController{
      * create new resource
      */
     public function store(){
-        $user = null;
+        $user    = null;
         $message = '';
+        $success = false;
 
         try{
             $input = Input::post();
 
             if($input['password'] != $input['confirm_password']){
-                throw new \Exception("Password and confirmation password not match", 1);
+                throw new Exception("Password and confirmation password not match", 1);
             }
 
             $user = Sentry::createUser(array(
@@ -137,9 +153,8 @@ class UserController extends \BaseController{
 
             $success = true;
             $message = 'User created successfully';
-        }catch (\Exception $e){
+        }catch (Exception $e){
             $message = $e->getMessage();
-            $success = false;
         }
 
         if(Request::isAjax()){
@@ -147,7 +162,7 @@ class UserController extends \BaseController{
             Response::setBody(json_encode(
                 array(
                     'success'   => $success,
-                    'data'      => ($user) ? $user->toArray() : null,
+                    'data'      => ($user) ? $user->toArray() : $user,
                     'message'   => $message,
                     'code'      => $success ? 200 : 500
                 )
@@ -170,10 +185,10 @@ class UserController extends \BaseController{
             $user    = Sentry::findUserById($id);
             $deleted = $user->delete();
             $code    = 200;
-        }catch(\Cartalyst\Sentry\Users\UserNotFoundException $e){
+        }catch(UserNotFoundException $e){
             $message = $e->getMessage();
             $code    = 404;
-        }catch(\Exception $e){
+        }catch(Exception $e){
             $message = $e->getMessage();
             $code    = 500;
         }
@@ -183,7 +198,7 @@ class UserController extends \BaseController{
             Response::setBody(json_encode(
                 array(
                     'success'   => $deleted,
-                    'id'        => $id,
+                    'data'      => array( 'id' => $id ),
                     'message'   => $message,
                     'code'      => $code
                 )

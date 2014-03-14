@@ -3,8 +3,9 @@ $(function(){
      * all response will be in below format
      * {
      *     success : boolean,
-     *     data : {resource_object},
-     *     message : string or null
+     *     data : {resource_object} or null,
+     *     message : string,
+     *     code : integer
      * }
      */
 
