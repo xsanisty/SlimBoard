@@ -13,26 +13,34 @@ with username ```admin@admin.com``` and password ```password```
 
 
 ####Installation
-To install SlimStarter, you just need to clone or download zip from this repository, and run composer update
+You can install SlimStarter by cloning this repository or download the zip file from this repository, and then run ```composer update```
 
+#####1 Clone Repository or Download Zip
 ```
 $git clone https://github.com/ikhsan017/SlimStarter.git
-$composer update
 ```
 
-or you can use ```composer create-project``` to install SlimStarter
+#####2 Install Deendency via Composer
+Run ```composer install``` to install the depenndency, or you can use ```composer create-project``` to install SlimStarter 
+without downloading zip or cloning this repository
 
 ```
 composer create-project xsanisty/slim-starter
 ```
 
-after ```composer install``` you need to import sql file manually in case you want to use Sentry, the file is located in
+#####Setup Permission
+After ```composer install``` you need to change file and folder permission
+```
+chmod 777 -R app/storage/
+chmod 666 app/config/database.php
+```
 
-    vendor/cartalyst/sentry/schema/mysql.sql
+#####Configure and Setup Database
+You can now access the installer by pointing install.php in your browser
+```
+http://localhost/path/to/SlimStarter/public/install.php
+```
 
-to disable Sentry, simply remove it from ```composer.json```, ```app/alias.php```, ```app/bootstrap/start.php```
-
-> in progress building the migrator and install script
 
 
 ####Configuration
