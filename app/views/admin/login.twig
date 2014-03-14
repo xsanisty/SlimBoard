@@ -16,16 +16,17 @@
                     </div>
                     <div class="panel-body">
                         <form role="form" method="post" action="{{baseUrl()}}/login">
+                            <input type="hidden" name="redirect" value="{{ flash.redirect ? : redirect}}">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus value="{{ flash.email }}">
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                        <input name="remember" type="checkbox" value="Remember Me" {% if flash.remember %}checked{% endif %}>Remember Me
                                     </label>
                                 </div>
 

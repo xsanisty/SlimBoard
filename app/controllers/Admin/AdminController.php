@@ -24,6 +24,7 @@ class AdminController extends \BaseController{
         if(Sentry::check()){
             Response::redirect($this->siteUrl('admin'));
         }else{
+            $this->data['redirect'] = (Input::get('redirect')) ? base64_decode(Input::get('redirect')) : '';
             App::render('admin/login.twig', $this->data);
         }
     }
@@ -32,15 +33,17 @@ class AdminController extends \BaseController{
      * Process the login
      */
     public function doLogin(){
-        
+        $remember = Input::post('remember', false);
+        $email    = Input::post('email');
+        $redirect = Input::post('redirect');
+        $redirect = ($redirect) ? $redirect : 'admin';
+
         try
         {
             $credential = array(
-                'email'     => Input::post('email'),
+                'email'     => $email,
                 'password'  => Input::post('password')
             );
-
-            $remember = Input::post('remember', false);
 
             // Try to authenticate the user
             $user = Sentry::authenticate($credential, false);
@@ -51,9 +54,12 @@ class AdminController extends \BaseController{
                 Sentry::login($user, false);
             }
 
-            Response::redirect($this->siteUrl('admin'));
+            Response::redirect($this->siteUrl($redirect));
         }catch(\Exception $e){
             App::flash('message', $e->getMessage());
+            App::flash('email', $email);
+            App::flash('redirect', $redirect);
+            App::flash('remember', $remember);
 
             Response::redirect($this->siteUrl('login'));
         }

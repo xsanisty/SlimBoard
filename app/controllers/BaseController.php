@@ -253,10 +253,7 @@ class BaseController{
      * generate siteUrl
      */
     protected function siteUrl($path, $includeIndex = false){
-        if($includeIndex){
-            return $this->data['baseUrl'].'index.php/'.$path;
-        }else{
-            return $this->data['baseUrl'].$path;
-        }
+        $path = trim($path, '/');
+        return $this->data['baseUrl'].$path;
     }
 }

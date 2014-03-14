@@ -7,6 +7,7 @@ Route::group(
     '/admin',
     function(){
         if(!Sentry::check()){
+
             if(Request::isAjax()){
                 Response::headers()->set('Content-Type', 'application/json');
                 Response::setBody(json_encode(
@@ -17,7 +18,8 @@ Route::group(
                 ));
                 App::stop();
             }else{
-                Response::redirect(App::urlFor('login'));
+                $redirect = Request::getResourceUri();
+                Response::redirect(App::urlFor('login').'?redirect='.base64_encode($redirect));
             }
         }
     },
