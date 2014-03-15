@@ -23,9 +23,9 @@
 @media(min-width:768px) {
     #page-wrapper {
         position: inherit;
-        margin: 0 0 0 250px;
+        margin: 0 0 0 200px;
         padding: 0 30px;
-        min-height: 1300px;
+        min-height: 800px;
         border-left: 1px solid #e7e7e7;
     }
 }
@@ -96,7 +96,7 @@
 
 /* Sidebar Menu Styles */
 
- .sidebar-search {
+.sidebar-search {
     padding: 15px;
 }
 
@@ -112,6 +112,10 @@
     content: "\f107";
 }
 
+.active > a {
+    color: #0636BA;
+}
+
 .nav-second-level li,
 .nav-third-level li {
     border-bottom: none !important;
@@ -125,11 +129,42 @@
     padding-left: 52px;
 }
 
+
+.pointer {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+.pointer .arrow,
+.pointer .arrow_border {
+    border-color: transparent #fff transparent transparent;
+    border-width: 11px;
+    border-style: solid;
+    font-size: 0;
+    left: 50%;
+    line-height: 0;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    width: 0;
+    z-index: 1002;
+    left: 0;
+    margin-left: 45%;
+}
+.pointer .arrow_border {
+    border-color: transparent #c0d2dd transparent transparent;
+    border-width: 11px;
+    margin-left: -1px;
+    border-style: solid;
+    z-index: 1001;
+    top: 0px;
+}
+
 @media(min-width:768px) {
     .navbar-static-side {
         z-index: 1;
         position: absolute;
-        width: 250px;
+        width: 200px;
     }
 
     .navbar-top-links .dropdown-messages,

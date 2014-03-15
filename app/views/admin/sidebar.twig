@@ -1,10 +1,12 @@
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav" id="side-menu">
-            <li>
+            <li {{ menu_active == 'dashboard' ? 'class="active"' }}>
+                {{ menu_active == 'dashboard' ? menu_pointer|raw }}
                 <a href="{{siteUrl('/admin')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
-            <li>
+            <li {{ menu_active == 'user' ? 'class="active"' }}>
+                {{ menu_active == 'user' ? menu_pointer|raw }}
                 <a href="{{siteUrl('/admin/user')}}"><i class="fa fa-user fa-fw"></i> Manage User</a>
             </li>
         </ul>
