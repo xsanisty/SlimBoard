@@ -23,6 +23,7 @@ $(function(){
                     '</div>'
                 );
             }else{
+                $('#saveConfiguration').prop('disabled', true);
                 $alert.html(
                     '<div class="alert alert-danger alert-dismissable">'+
                         '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'+
