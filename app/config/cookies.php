@@ -1,6 +1,6 @@
 <?php
 
-$config['cookie'] = array(
+$config['cookies'] = array(
     'expires'       => '20 minutes',
     'path'          => '/',
     'domain'        => null,

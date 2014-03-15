@@ -1,6 +1,6 @@
 <?php
 
-$config['alias'] = array(
+$config['aliases'] = array(
     'Slim'      => 'Slim\Slim',
     'Middleware'=> 'Slim\Middleware',
     'Model'     => 'Illuminate\Database\Eloquent\Model',
