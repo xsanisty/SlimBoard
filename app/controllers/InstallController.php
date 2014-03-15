@@ -216,7 +216,10 @@ CONFIG;
             'password'    => 'password',
             'first_name'  => 'Website',
             'last_name'   => 'Administrator',
-            'activated'   => 1
+            'activated'   => 1,
+            'permissions' => array(
+                'admin'     => 1
+            )
         ));
     }
 }

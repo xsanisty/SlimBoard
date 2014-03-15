@@ -5,7 +5,6 @@ define('APP_PATH', __DIR__.'/../../app/');
 define('PUBLIC_PATH', __DIR__.'/../../public/');
 
 require VENDOR_PATH.'autoload.php';
-use SlimFacades\Facade;
 
 /**
  * Load the configuration
@@ -16,13 +15,19 @@ foreach (glob(APP_PATH.'config/*.php') as $configFile) {
     require $configFile;
 }
 
+/** Merge cookies config to slim config */
+if(isset($config['cookies'])){
+    foreach($config['cookies'] as $configKey => $configVal){
+        $config['slim']['cookies.'.$configKey] = $configVal;
+    }
+}
 
 /**
  * Initialize Slim application
  */
-$app = new Slim\Slim($config['app']);
+$app = new \Slim\Slim($config['slim']);
 
-$app->add(new \Slim\Middleware\SessionCookie($config['cookie']));
+$app->add(new \Slim\Middleware\SessionCookie($config['cookies']));
 $app->view()->parserOptions = $config['twig'];
 
 $app->view()->parserExtensions = array(
@@ -30,11 +35,30 @@ $app->view()->parserExtensions = array(
 );
 
 /**
- * initialize the Slim Facade class
+ * Initialize the Slim Facade class
  */
-Facade::setFacadeApplication($app);
-Facade::registerAliases($config['alias']);
+\SlimFacades\Facade::setFacadeApplication($app);
+\SlimFacades\Facade::registerAliases($config['aliases']);
 
+/**
+ * Publish the configuration to Slim instance so controller have access to it
+ */
+foreach ($config as $configKey => $configVal) {
+    if($configKey != 'slim'){
+        $app->config($configKey, $configVal);
+
+        if($configKey != 'cookies'){
+            foreach($configVal as $subConfigKey => $subConfigVal){
+                $app->config($configKey.'.'.$subConfigKey, $subConfigVal);
+            }
+        }
+    }
+    
+}
+
+/**
+ * if called from the install script, disable all hooks, middlewares, and database init
+ */
 if(!defined('INSTALL')){
 
     /**
