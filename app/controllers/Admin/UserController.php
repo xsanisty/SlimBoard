@@ -10,10 +10,13 @@ use \Response;
 use \Input;
 use \Exception;
 use \Cartalyst\Sentry\Users\UserNotFoundException;
-use \BaseController;
 
 class UserController extends BaseController{
 
+    public function __construct(){
+        parent::__construct();
+        $this->data['menu_active'] = 'user';
+    }
     /**
      * display list of resource
      */

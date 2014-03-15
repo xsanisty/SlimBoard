@@ -8,7 +8,7 @@ use \Input;
 use \Sentry;
 use \Response;
 
-class AdminController extends \BaseController{
+class AdminController extends BaseController{
 
     /**
      * display the admin dashboard
