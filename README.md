@@ -8,7 +8,10 @@ Additional package is Sentry as authentication provider and Slim-facade which pr
 with static interface like Laravel syntax (built based on Laravel's Facade).
 
 ####Showcase
-You can test SlimStarter in live site by visiting here (shared hosting) http://slim-starter.xsanisty.com 
+You can test SlimStarter in live site by visiting here : 
+(shared hosting) http://slimstarter.xsanisty.com
+(pagodabox) http://slimstarter.gopagoda.com
+
 with username ```admin@admin.com``` and password ```password```.
 
 
