@@ -97,11 +97,13 @@ $(function(){
             data: $userdata,
             method : $method,
             success: function(resp){
+
+                $button.prop('disabled', false);
+                $button.html('save');
+                
                 if(resp.success){
 
                     user = resp.data;
-                    $button.prop('disabled', false);
-                    $button.html('save');
 
                     if($method == 'POST'){
                         /** append user to new row */
