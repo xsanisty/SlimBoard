@@ -84,9 +84,13 @@ $(function(){
     $('#btn-user-save').click(function(e){
         e.preventDefault();
 
+        var $button = $(this);
         var $userdata = $('#user-form-data').serialize();
         var $method = $(this).attr('data-method');
         var $url = ($method == 'POST') ? global.baseUrl+'admin/user' : global.baseUrl+'admin/user/'+$('#user_id').val();
+
+        $button.prop('disabled', true);
+        $button.html('saving...');
 
         $.ajax({
             url: $url,
@@ -96,6 +100,8 @@ $(function(){
                 if(resp.success){
 
                     user = resp.data;
+                    $button.prop('disabled', false);
+                    $button.html('save');
 
                     if($method == 'POST'){
                         /** append user to new row */
