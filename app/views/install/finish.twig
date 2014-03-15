@@ -22,6 +22,16 @@
                 Please remove app/public/install.php for security purpose
             </p>
         </div>
+
+        {% if flash.message %}
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="alert alert-danger alert-dismissable">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                {{ flash.message }}
+            </div>
+        </div>
+        {% endif %}
+        
         <div class="col-lg-6">
             <a href="{{baseUrl}}doc" class="btn btn-primary pull-right">Read the Documentation</a>
         </div>

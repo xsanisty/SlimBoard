@@ -80,10 +80,10 @@ class InstallController extends BaseController{
 
 \$config['database'] = array(
     'driver'    => '{$config['driver']}',
-    'host'      => '{$config['host']}',
-    'database'  => '{$config['database']}',
-    'username'  => '{$config['username']}',
-    'password'  => '{$config['password']}',
+    'host'      => isset(\$_SERVER['DB1_HOST']) ? \$_SERVER['DB1_HOST'] : '{$config['host']}',
+    'database'  => isset(\$_SERVER['DB1_NAME']) ? \$_SERVER['DB1_NAME'] : '{$config['database']}',
+    'username'  => isset(\$_SERVER['DB1_USER']) ? \$_SERVER['DB1_USER'] : '{$config['username']}',
+    'password'  => isset(\$_SERVER['DB1_PASS']) ? \$_SERVER['DB1_PASS'] : '{$config['password']}',
     'charset'   => '{$config['charset']}',
     'collation' => '{$config['collation']}',
     'prefix'    => '{$config['prefix']}',
@@ -211,15 +211,19 @@ CONFIG;
      * seed the database with initial value
      */
     private function seed(){
-        Sentry::createUser(array(
-            'email'       => 'admin@admin.com',
-            'password'    => 'password',
-            'first_name'  => 'Website',
-            'last_name'   => 'Administrator',
-            'activated'   => 1,
-            'permissions' => array(
-                'admin'     => 1
-            )
-        ));
+        try{
+            Sentry::createUser(array(
+                'email'       => 'admin@admin.com',
+                'password'    => 'password',
+                'first_name'  => 'Website',
+                'last_name'   => 'Administrator',
+                'activated'   => 1,
+                'permissions' => array(
+                    'admin'     => 1
+                )
+            ));
+        }catch(\Exception $e){
+            App::flash('message', $e->getMessage());
+        }
     }
 }
