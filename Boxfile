@@ -1,0 +1,26 @@
+web1:
+  document_root: public
+  php_version: 5.4.14
+  php_extensions:
+    - mbstring
+    - mcrypt
+    - pdo_mysql
+    - redis
+    - zip
+    - gd
+    - xcache
+  php_session_save_handler: redis
+  php_session_save_path: "tcp://tunnel.pagodabox.com:6379"
+  shared_writable_dirs:
+    - app/storage/cache
+    - app/storage/db
+    - app/storage/log
+  after_build:
+    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install --prefer-dist"
+  after_deploy:
+    - "rm -f app/storage/cache/*"
+    - "php migrate.php"
+  before_deploy:
+    - ""
+cache1:
+  type: redis
