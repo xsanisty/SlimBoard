@@ -17,9 +17,8 @@ with username ```admin@admin.com``` and password ```password```.
 
 ####Installation
 
-```
-You can now install SlimStarter on pagodabox via App Cafe https://pagodabox.com/cafe/ikhsan017/slimstarter
-```
+> You can now install SlimStarter on pagodabox via App Cafe https://pagodabox.com/cafe/ikhsan017/slimstarter
+
 
 #####1 Manual Install
 You can manually install SlimStarter by cloning this repo or download the zip file from this repo, and run ```composer install```.
