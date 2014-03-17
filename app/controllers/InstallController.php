@@ -29,16 +29,7 @@ class InstallController extends BaseController
     {
         $success = false;
         $message = '';
-        $config  = array(
-            'driver'    => Input::post('dbdriver'),
-            'host'      => Input::post('dbhost'),
-            'database'  => Input::post('dbname'),
-            'username'  => Input::post('dbuser'),
-            'password'  => Input::post('dbpass'),
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
-        );
+        $config  = $this->getPostConfiguration();
 
         try{
             $this->makeConnection($config);
@@ -68,18 +59,8 @@ class InstallController extends BaseController
      */
     public function writeConfiguration()
     {
-        $configFile = fopen(APP_PATH.'config/database.php', 'w');
-        $config  = array(
-            'driver'    => Input::post('dbdriver'),
-            'host'      => Input::post('dbhost'),
-            'database'  => Input::post('dbname'),
-            'username'  => Input::post('dbuser'),
-            'password'  => Input::post('dbpass'),
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
-        );
-
+        $configFile= APP_PATH.'config/database.php';
+        $config    = $this->getPostConfiguration();
         $configStr = <<<CONFIG
 <?php
 
@@ -95,14 +76,30 @@ class InstallController extends BaseController
 );
 CONFIG;
         
-        fwrite($configFile, $configStr);
-        fclose($configFile);
+        file_put_contents($configFile, $configStr);
 
         $this->makeConnection($config);
         $this->migrate();
         $this->seed();
 
         Response::redirect($this->data['baseUrl'].'install.php/finish');
+    }
+
+    /**
+     * Get configuration value posted by user
+     */
+    private function getPostConfiguration()
+    {
+        return array(
+            'driver'    => Input::post('dbdriver'),
+            'host'      => Input::post('dbhost'),
+            'database'  => Input::post('dbname'),
+            'username'  => Input::post('dbuser'),
+            'password'  => Input::post('dbpass'),
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        );
     }
 
     /**
