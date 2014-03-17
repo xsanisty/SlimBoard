@@ -20,9 +20,8 @@
 use Illuminate\Database\Capsule\Manager as Capsule;
 $app->hook('slim.before', function() use ($app, $config){
     try{
-        $capsule = new Capsule;
-        $app->container->singleton('db',function() use ($capsule){
-            return $capsule;
+        $app->container->singleton('db',function(){
+            return new Capsule;;
         });
 
         $app->db->addConnection($config['database']);
@@ -35,14 +34,20 @@ $app->hook('slim.before', function() use ($app, $config){
         Sentry::setupDatabaseResolver($app->db->connection()->getPdo());
     }catch(PDOException $e){
         if(file_exists(PUBLIC_PATH.'install.php') && !defined('INSTALL')){
-
+            /**
+             * In case app can not connect to the database and install script was found, redirect to install script
+             * we assume that application is not configured yet
+             */
+            
             $publicPath  = dirname($_SERVER['SCRIPT_NAME']).'/';
             $installPath = Request::getUrl().$publicPath.'install.php';
             Response::redirect($installPath);
         }else{
-            $app->error();
+            /**
+             * If install script can not be found, re throw the exception to be handled by Slim
+             */
+        
+            throw $e;
         }
-    }catch(Exception $e){
-        $app->error();
     }
 });
