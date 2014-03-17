@@ -9,6 +9,9 @@
                 {{ menu_active == 'user' ? menu_pointer|raw }}
                 <a href="{{siteUrl('/admin/user')}}"><i class="fa fa-user fa-fw"></i> Manage User</a>
             </li>
+            <li class="visible-xs">
+                <a href="{{ urlFor('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout
+            </a>
         </ul>
         <!-- /#side-menu -->
     </div>
