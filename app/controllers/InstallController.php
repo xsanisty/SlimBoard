@@ -1,12 +1,14 @@
 <?php
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-class InstallController extends BaseController{
+class InstallController extends BaseController
+{
     
     /**
      * display database configuration form
      */
-    public function index(){
+    public function index()
+    {
         $this->loadJs('app/install.js');
         $this->publish('baseUrl', $this->data['baseUrl']);
         App::render('install/configure_db.twig', $this->data);
@@ -15,14 +17,16 @@ class InstallController extends BaseController{
     /**
      * Display finish page
      */
-    public function finish(){
+    public function finish()
+    {
         App::render('install/finish.twig', $this->data);
     }
 
     /**
      * check database connection based on provided setting
      */
-    public function checkConnection(){
+    public function checkConnection()
+    {
         $success = false;
         $message = '';
         $config  = array(
@@ -62,7 +66,8 @@ class InstallController extends BaseController{
     /**
      * write configuration to database configuration
      */
-    public function writeConfiguration(){
+    public function writeConfiguration()
+    {
         $configFile = fopen(APP_PATH.'config/database.php', 'w');
         $config  = array(
             'driver'    => Input::post('dbdriver'),
@@ -103,7 +108,8 @@ CONFIG;
     /**
      * create connection to the database based on given configuration
      */
-    private function makeConnection($config){
+    private function makeConnection($config)
+    {
         try{
             $capsule = new Capsule;
 
@@ -119,7 +125,8 @@ CONFIG;
     /**
      * migrate the database schema
      */
-    private function migrate(){
+    private function migrate()
+    {
         /**
          * create table for sentry user
          */
@@ -210,7 +217,8 @@ CONFIG;
     /**
      * seed the database with initial value
      */
-    private function seed(){
+    private function seed()
+    {
         try{
             Sentry::createUser(array(
                 'email'       => 'admin@admin.com',

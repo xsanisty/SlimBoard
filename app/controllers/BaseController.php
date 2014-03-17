@@ -1,11 +1,13 @@
 <?php
 
-class BaseController{
+class BaseController
+{
 
     protected $app;
     protected $data;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->app = Slim\Slim::getInstance();
         $this->data = array();
 
@@ -208,7 +210,8 @@ class BaseController{
     /**
      * remove published variable from registry
      */
-    protected function unpublish($key){
+    protected function unpublish($key)
+    {
         unset($this->data['global'][$key]);
     }
 
@@ -245,7 +248,8 @@ class BaseController{
     /**
      * generate base URL
      */
-    protected function baseUrl(){
+    protected function baseUrl()
+    {
         $path       = dirname($_SERVER['SCRIPT_NAME']).'/';
         return Request::getUrl().$path;
     }
@@ -253,7 +257,8 @@ class BaseController{
     /**
      * generate siteUrl
      */
-    protected function siteUrl($path, $includeIndex = false){
+    protected function siteUrl($path, $includeIndex = false)
+    {
         $path = trim($path, '/');
         return $this->data['baseUrl'].$path;
     }

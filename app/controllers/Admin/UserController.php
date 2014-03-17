@@ -11,16 +11,19 @@ use \Input;
 use \Exception;
 use \Cartalyst\Sentry\Users\UserNotFoundException;
 
-class UserController extends BaseController{
+class UserController extends BaseController
+{
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->data['menu_active'] = 'user';
     }
     /**
      * display list of resource
      */
-    public function index($page = 1){
+    public function index($page = 1)
+    {
         $user = Sentry::getUser();
         $this->data['title'] = 'Users List';
         $this->data['users'] = User::where('id', '<>', $user->id)->get()->toArray();
@@ -38,7 +41,8 @@ class UserController extends BaseController{
     /**
      * display resource with specific id
      */
-    public function show($id){
+    public function show($id)
+    {
         if(Request::isAjax()){
             $user = null;
             $message = '';
@@ -67,9 +71,11 @@ class UserController extends BaseController{
     /**
      * show edit from resource with specific id
      */
-    public function edit($id){
+    public function edit($id)
+    {
         try{
             $user = Sentry::findUserById($id);
+            //display edit form in non-ajax request
         }catch(UserNotFoundException $e){
             App::notFound();
         }catch(Exception $e){
@@ -80,7 +86,8 @@ class UserController extends BaseController{
     /**
      * update resource with specific id
      */
-    public function update($id){
+    public function update($id)
+    {
         $success = false;
         $message = '';
         $user    = null;
@@ -134,7 +141,8 @@ class UserController extends BaseController{
     /**
      * create new resource
      */
-    public function store(){
+    public function store()
+    {
         $user    = null;
         $message = '';
         $success = false;
@@ -178,7 +186,8 @@ class UserController extends BaseController{
     /**
      * destroy resource with specific id
      */
-    public function destroy($id){
+    public function destroy($id)
+    {
         $id      = (int) $id;
         $deleted = false;
         $message = '';

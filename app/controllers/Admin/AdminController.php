@@ -8,19 +8,22 @@ use \Input;
 use \Sentry;
 use \Response;
 
-class AdminController extends BaseController{
+class AdminController extends BaseController
+{
 
     /**
      * display the admin dashboard
      */
-    public function index(){
+    public function index()
+    {
         App::render('admin/index.twig', $this->data);
     }
 
     /**
      * display the login form
      */
-    public function login(){
+    public function login()
+    {
         if(Sentry::check()){
             Response::redirect($this->siteUrl('admin'));
         }else{
@@ -32,14 +35,14 @@ class AdminController extends BaseController{
     /**
      * Process the login
      */
-    public function doLogin(){
+    public function doLogin()
+    {
         $remember = Input::post('remember', false);
         $email    = Input::post('email');
         $redirect = Input::post('redirect');
         $redirect = ($redirect) ? $redirect : 'admin';
 
-        try
-        {
+        try{
             $credential = array(
                 'email'     => $email,
                 'password'  => Input::post('password')
@@ -68,7 +71,8 @@ class AdminController extends BaseController{
     /**
      * Logout the user
      */
-    public function logout(){
+    public function logout()
+    {
         Sentry::logout();
 
         Response::redirect($this->siteUrl('login'));
