@@ -1,5 +1,8 @@
 <?php
 
+session_cache_limiter(false);
+session_start();
+
 define('VENDOR_PATH', __DIR__.'/../../vendor/');
 define('APP_PATH', __DIR__.'/../../app/');
 define('PUBLIC_PATH', __DIR__.'/../../public/');
@@ -27,10 +30,8 @@ if(isset($config['cookies'])){
  */
 $app = new \Slim\Slim($config['slim']);
 
-$app->add(new \Slim\Middleware\SessionCookie($config['cookies']));
-$app->view()->parserOptions = $config['twig'];
-
-$app->view()->parserExtensions = array(
+$app->view->parserOptions = $config['twig'];
+$app->view->parserExtensions = array(
     new \Slim\Views\TwigExtension(),
 );
 
@@ -41,7 +42,7 @@ $app->view()->parserExtensions = array(
 \SlimFacades\Facade::registerAliases($config['aliases']);
 
 /**
- * Publish the configuration to Slim instance so controller have access to it
+ * Publish the configuration to Slim instance so controller have access to it via
  */
 foreach ($config as $configKey => $configVal) {
     if($configKey != 'slim'){
