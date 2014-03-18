@@ -254,7 +254,7 @@ class BaseController
         $path       = trim($path, '/');
         $baseUrl    = Request::getUrl();
         $baseUrl    = trim($baseUrl, '/');
-        return $baseUrl.'/'.$path.($path) ? '/' : '';
+        return $baseUrl.'/'.$path.( $path ? '/' : '' );
     }
 
     /**
