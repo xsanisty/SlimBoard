@@ -16,11 +16,13 @@
         
     },
     "autoload": {
-        "classmap": [
-            "app/controllers",
-            "app/models",
-            "app/middlewares"
-        ]
+        "psr-4": {
+            "" : [
+                "app/controllers/",
+                "app/models/",
+                "app/middlewares/"
+            ]
+        }
     },
     "authors": [
         {
