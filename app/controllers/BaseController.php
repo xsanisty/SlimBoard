@@ -250,8 +250,11 @@ class BaseController
      */
     protected function baseUrl()
     {
-        $path       = dirname($_SERVER['SCRIPT_NAME']).'/';
-        return Request::getUrl().$path;
+        $path       = dirname($_SERVER['SCRIPT_NAME']);
+        $path       = trim($path, '/');
+        $baseUrl    = Request::getUrl();
+        $baseUrl    = trim($baseUrl, '/');
+        return $baseUrl.'/'.$path.'/';
     }
 
     /**
