@@ -8,6 +8,36 @@
     margin-bottom: 20px;
 }
 
+.pointer {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+.pointer .arrow,
+.pointer .arrow_border {
+    border-color: transparent #fff transparent transparent;
+    border-width: 11px;
+    border-style: solid;
+    font-size: 0;
+    left: 50%;
+    line-height: 0;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    width: 0;
+    z-index: 1002;
+    left: 0;
+    margin-left: 45%;
+}
+.pointer .arrow_border {
+    border-color: transparent #c0d2dd transparent transparent;
+    border-width: 11px;
+    margin-left: -1px;
+    border-style: solid;
+    z-index: 1001;
+    top: 0px;
+}
+
 #page-wrapper{
     min-height: 0;
 }
