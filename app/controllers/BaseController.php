@@ -59,7 +59,7 @@ class BaseController
 
         //after:file, before:file, first, last
         $position = (isset($options['position'])) ? $options['position']:'last';
-        
+
         if(!in_array($css,$this->data['css'][$location])){
             if($position=='first' || $position=='last'){
                 $key = $position;
@@ -67,16 +67,16 @@ class BaseController
             }else{
                 list($key,$file) =  explode(':',$position);
             }
-            
+
             switch($key){
                 case 'first':
                     array_unshift($this->data['css'][$location],$css);
                 break;
-                
+
                 case 'last':
                     $this->data['css'][$location][]=$css;
                 break;
-                
+
                 case 'before':
                 case 'after':
                     $varkey = array_keys($this->data['css'][$location],$file);
@@ -103,7 +103,7 @@ class BaseController
 
         //after:file, before:file, first, last
         $position = (isset($options['position'])) ? $options['position']:'last';
-        
+
         if(!in_array($js,$this->data['js'][$location])){
             if($position=='first' || $position=='last'){
                 $key = $position;
@@ -111,16 +111,16 @@ class BaseController
             }else{
                 list($key,$file) =  explode(':',$position);
             }
-            
+
             switch($key){
                 case 'first':
                     array_unshift($this->data['js'][$location],$js);
                 break;
-                
+
                 case 'last':
                     $this->data['js'][$location][]=$js;
                 break;
-                
+
                 case 'before':
                 case 'after':
                     $varkey = array_keys($this->data['js'][$location],$file);
@@ -134,7 +134,7 @@ class BaseController
             }
         }
     }
-    
+
     /**
      * clear enqueued css asset
      */
@@ -145,7 +145,7 @@ class BaseController
             'external'  => array()
         );
     }
-    
+
     /**
      * clear enqueued js asset
      */
@@ -156,7 +156,7 @@ class BaseController
             'external'  => array()
         );
     }
-    
+
     /**
      * remove individual css file from queue list
      * @param  [string] $css [css file to be removed]
@@ -167,13 +167,13 @@ class BaseController
         if($key){
             array_splice($this->data['css']['internal'],$key[0],1);
         }
-        
+
         $key=array_keys($this->data['css']['external'],$css);
         if($key){
             array_splice($this->data['css']['external'],$key[0],1);
         }
     }
-    
+
     /**
      * remove individual js file from queue list
      * @param  [string] $js [js file to be removed]
@@ -184,7 +184,7 @@ class BaseController
         if($key){
             array_splice($this->data['js']['internal'],$key[0],1);
         }
-        
+
         $key=array_keys($this->data['js']['external'],$js);
         if($key){
             array_splice($this->data['js']['external'],$key[0],1);
@@ -199,7 +199,7 @@ class BaseController
         $this->data['message'][$type] = $message;
     }
 
-    /** 
+    /**
      * register global variable to be accessed via javascript
      */
     protected function publish($key,$val)
@@ -254,7 +254,7 @@ class BaseController
         $path       = trim($path, '/');
         $baseUrl    = Request::getUrl();
         $baseUrl    = trim($baseUrl, '/');
-        return $baseUrl.'/'.$path.'/';
+        return $baseUrl.'/'.$path.($path) ? '/' : '';
     }
 
     /**
