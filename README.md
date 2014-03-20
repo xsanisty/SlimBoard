@@ -1,14 +1,14 @@
 SlimStarter
 ===========
 
-SlimStarter is a bootstrap application built with Slim Framework in MVC architecture, 
+SlimStarter is a bootstrap application built with Slim Framework in MVC architecture,
 with Laravel's Eloquent as database provider (Model) and Twig as template engine (View).
 
-Additional package is Sentry as authentication provider and Slim-facade which provide easy access to underlying Slim API 
+Additional package is Sentry as authentication provider and Slim-facade which provide easy access to underlying Slim API
 with static interface like Laravel syntax (built based on Laravel's Facade).
 
 ####Showcase
-You can test SlimStarter in live site by visiting here : 
+You can test SlimStarter in live site by visiting here :
 (shared hosting) http://slimstarter.xsanisty.com
 (pagodabox) http://slimstarter.gopagoda.com
 
@@ -50,7 +50,7 @@ http://localhost/path/to/SlimStarter/public/install.php
 
 
 ####Configuration
-Configuration file of SlimStarter located in ```app/config```, edit the database.php, cookie.php and other to match your need 
+Configuration file of SlimStarter located in ```app/config```, edit the database.php, cookie.php and other to match your need
 
 ####Routing
 Routing configuration is located in ```app/routes.php```, it use Route facade to access underlying Slim router.
@@ -60,7 +60,7 @@ If you prefer the 'Slim' way, you can use $app to access Slim instance
 Route to closure
 ```php
 Route::get('/', function(){
-    App::render('welcome.twig');
+    View::display('welcome.twig');
 });
 
 /** the Slim way */
@@ -97,15 +97,15 @@ Route group
 /** Route group to book resource */
 Route::group('/book', function(){
     Route::get('/', 'BookController:index'); // GET /book
-    Route::get('/:id', 'BookController:show'); // GET /book/:id 
+    Route::get('/:id', 'BookController:show'); // GET /book/:id
     Route::get('/:id/edit', 'BookController:edit'); // GET /book/:id/edit
-    Route::put('/:id', 'BookController:update'); // PUT /book/:id 
+    Route::put('/:id', 'BookController:update'); // PUT /book/:id
     Route::delete('/:id', 'BookController:destroy'); // DELETE /book/:id
 });
 ```
 
 ####Model
-Models are located in ```app/models``` directory, since Eloquent is used as database provider, you can write model like you 
+Models are located in ```app/models``` directory, since Eloquent is used as database provider, you can write model like you
 write model for Laravel, for complete documentation about eloquent, please refer to http://laravel.com/docs/eloquent
 
 file : app/models/Book.php
@@ -123,7 +123,7 @@ Class HomeController extends BaseController{
 
     public function welcome(){
         $this->data['title'] = 'Some title';
-        App::render('welcome.twig', $this->data);
+        View::display('welcome.twig', $this->data);
     }
 }
 ```
@@ -142,17 +142,17 @@ you can use ```loadJs``` or ```loadCss``` , ```removeJs``` or ```removeCss``` to
 to remove all queued js or css file.
 
 ```php
-/**  
+/**
  * load local js file located in public/assets/js/application.js
- * by default, it will be placed in the last list, 
+ * by default, it will be placed in the last list,
  * to modify it, use position option in second parameter
  * array(
  *      'position' => 'last|first|after:file|before:file'
  * )
  */
-$this->loadJs('application.js', ['position' => 'after:jquery.js']) 
+$this->loadJs('application.js', ['position' => 'after:jquery.js'])
 
-/** 
+/**
  * load external js file, eg: js in CDN
  * use location option in second parameter
  * array(
@@ -195,7 +195,7 @@ console.log(global.user);
 ######Default variable available in template
 
 ####View
-Views file are located in ```app/views``` directory in twig format, there is master.twig with 'body' block as default master template 
+Views file are located in ```app/views``` directory in twig format, there is master.twig with 'body' block as default master template
 shipped with SlimStarer that will provide default access to published js variable.
 
 For detailed Twig documentation, please refer to http://twig.sensiolabs.org/documentation
@@ -211,15 +211,15 @@ file : app/views/welcome.twig
 ```
 
 #####Rendering view inside controller
-If your controller extends the BaseController class, you will have access to $data property which will be the placeholder for all 
+If your controller extends the BaseController class, you will have access to $data property which will be the placeholder for all
 view's data.
 
 ```php
-App::render('welcome.twig', $this->data);
+View::display('welcome.twig', $this->data);
 ```
 
 ####Hooks and Middlewares
-You can still hook the Slim event, or registering Middleware to Slim instance in ```app/bootstrap/app.php```, 
+You can still hook the Slim event, or registering Middleware to Slim instance in ```app/bootstrap/app.php```,
 Slim instance is accessible in ```$app``` variable.
 
 ```php
