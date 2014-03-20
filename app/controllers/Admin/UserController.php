@@ -3,6 +3,7 @@
 namespace Admin;
 
 use \App;
+use \View;
 use \User;
 use \Sentry;
 use \Request;
@@ -26,7 +27,9 @@ class UserController extends BaseController
     {
         $user = Sentry::getUser();
         $this->data['title'] = 'Users List';
-        $this->data['users'] = User::where('id', '<>', $user->id)->get()->toArray();
+        $this->data['users'] = User::where('id', '<>', $user->id)
+                               ->get()
+                               ->toArray();
 
         /** load the user.js app */
         $this->loadJs('app/user.js');
@@ -35,7 +38,7 @@ class UserController extends BaseController
         $this->publish('baseUrl', $this->data['baseUrl']);
 
         /** render the template */
-        App::render('admin/user/index.twig', $this->data);
+        View::display('admin/user/index.twig', $this->data);
     }
 
     /**

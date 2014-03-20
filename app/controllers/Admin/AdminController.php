@@ -16,7 +16,7 @@ class AdminController extends BaseController
      */
     public function index()
     {
-        App::render('admin/index.twig', $this->data);
+        View::display('admin/index.twig', $this->data);
     }
 
     /**
@@ -28,7 +28,7 @@ class AdminController extends BaseController
             Response::redirect($this->siteUrl('admin'));
         }else{
             $this->data['redirect'] = (Input::get('redirect')) ? base64_decode(Input::get('redirect')) : '';
-            App::render('admin/login.twig', $this->data);
+            View::display('admin/login.twig', $this->data);
         }
     }
 
