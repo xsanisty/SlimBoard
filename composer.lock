@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0778936d198a3b791ba72c9da4a20864",
+    "hash": "b10cc3ee1459343ec5df30c24a213392",
     "packages": [
         {
             "name": "cartalyst/sentry",
@@ -491,17 +491,17 @@
         },
         {
             "name": "slim/views",
-            "version": "dev-develop",
+            "version": "dev-release-0.1.2",
             "target-dir": "Slim/Views",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeguy/Slim-Views.git",
-                "reference": "0c5069b8b95a73484498ae65694a044fa5ccdbff"
+                "reference": "900f34cf0b13581ace66a558c5cd31283d552fcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeguy/Slim-Views/zipball/0c5069b8b95a73484498ae65694a044fa5ccdbff",
-                "reference": "0c5069b8b95a73484498ae65694a044fa5ccdbff",
+                "url": "https://api.github.com/repos/codeguy/Slim-Views/zipball/900f34cf0b13581ace66a558c5cd31283d552fcb",
+                "reference": "900f34cf0b13581ace66a558c5cd31283d552fcb",
                 "shasum": ""
             },
             "require": {
@@ -541,7 +541,7 @@
                 "slimphp",
                 "templating"
             ],
-            "time": "2014-03-11 12:08:02"
+            "time": "2014-03-08 03:04:58"
         },
         {
             "name": "twig/extensions",
