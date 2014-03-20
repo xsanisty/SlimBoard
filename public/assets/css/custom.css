@@ -4,7 +4,7 @@
 }
 
 .page-header-box{
-    border-bottom: 1px solid #EEEEEE;
+    border-bottom: 1px solid #e7e7e7;
     margin-bottom: 20px;
 }
 
@@ -30,14 +30,33 @@
     margin-left: 45%;
 }
 .pointer .arrow_border {
-    border-color: transparent #c0d2dd transparent transparent;
+    border-color: transparent #e7e7e7 transparent transparent;
     border-width: 11px;
     margin-left: -1px;
     border-style: solid;
     z-index: 1001;
     top: 0px;
 }
+.menu_active > a {
+    color: #0636BA;
+    background: #f4f4f4;
+}
 
 #page-wrapper{
     min-height: 0;
+}
+
+
+@media(min-width:768px) {
+    .navbar-static-side {
+        z-index: 1;
+        position: absolute;
+        width: 200px;
+    }
+
+    #page-wrapper {
+        margin: 0 0 0 200px;
+        min-height: 0;
+        border-left: 1px solid #e7e7e7;
+    }
 }
