@@ -6,7 +6,7 @@
     "require": {
         "php": ">= 5.3.0",
         "slim/slim": "2.4.*",
-        "slim/views":"dev-release-0.1.2",
+        "slim/views":"dev-develop",
         "twig/twig": "1.*",
         "twig/extensions": "*",
         "itsgoingd/slim-facades": "dev-master",
