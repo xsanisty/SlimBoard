@@ -65,7 +65,7 @@ Route::get('/', function(){
 
 /** the Slim way */
 $app->get('/', function() use ($app){
-    $app->render('welcome.twig');
+    $app->view->display('welcome.twig');
 });
 ```
 
@@ -112,6 +112,8 @@ file : app/models/Book.php
 ```php
 class Book Extends Model{}
 ```
+>Note: Eloquent has some limitations due to dependency to some Laravel's and Symfony's components which is not included,
+such as ```remember()``` method, which is depend on ```Illuminate\Cache```, ```Illuminate\Filesystem```, ```Symfony\Finder```  (for FileStore Driver)
 
 ####Controller
 Controllers are located in ```app/controllers``` directory, you may extends the BaseController to get access to predefined helper.
