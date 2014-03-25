@@ -3,6 +3,14 @@
     "description": "Slim Framework in MVC environment with Eloquent as database provider and Twig as template engine",
     "keywords": ["framework", "slim", "mvc", "eloquent", "twig", "slim-starter"],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Ikhsan Agustian",
+            "email": "ikhsan017@gmail.com",
+            "homepage":"http://www.xsanisty.com/project/slimstarter",
+            "role": "developer"
+        }
+    ],
     "require": {
         "php": ">= 5.3.0",
         "slim/slim": "2.4.*",
@@ -24,12 +32,20 @@
             ]
         }
     },
-    "authors": [
-        {
-            "name": "Ikhsan Agustian",
-            "email": "ikhsan017@gmail.com",
-            "homepage":"http://www.xsanisty.com/project/slimstarter",
-            "role": "developer"
-        }
-    ]
+    "scripts": {
+        "post-install-cmd": [
+            "chmod 777 -R app/storage"
+        ],
+        "post-update-cmd": [
+            "php migrate.php",
+            "rm -rf app/storage/cache/*"
+        ],
+        "post-create-project-cmd": [
+            "chmod 777 -R app/storage"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev"
 }
