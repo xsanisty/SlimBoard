@@ -28,14 +28,9 @@
                         <td>{{ user.first_name }}</td>
                         <td>{{ user.last_name }}</td>
                         <td>{{ user.email }}</td>
-                        <td>
-                            <div class="dropdown text-center">
-                                <a class="btn btn-primary btn-sm" href="#" data-toggle="dropdown">Action <b class="caret"></b></a>
-                                <ul aria-labelledby="dLabel" role="menu" class="dropdown-menu pull-right">
-                                    <li class="text-left"><a data-id="{{ user.id }}" class="btn-user-edit" href="#">Edit</a></li>
-                                    <li class="text-left"><a data-id="{{ user.id }}" class="btn-user-delete" href="#">Remove</a></li>
-                                </ul>
-                            </div>
+                        <td class="text-center">
+                            <a data-id="{{ user.id }}" class="btn btn-xs btn-primary btn-user-edit" href="#"><i class="fa fa-edit fa-fw"></i>Edit</a>
+                            <a data-id="{{ user.id }}" class="btn btn-xs btn-danger btn-user-delete" href="#"><i class="fa fa-times fa-fw"></i>Remove</a>
                         </td>
                     </tr>
                     {% endfor %}
@@ -44,5 +39,21 @@
         </div>
     </div>
 </div>
-{% include 'admin/user/form.twig' %}
+<div class="modal fade" id="user-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="modal-title">User Form</h4>
+            </div>
+            <div class="modal-body">
+                {% include 'admin/user/form.twig' %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success btn-sm" id="btn-user-save" data-method="">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

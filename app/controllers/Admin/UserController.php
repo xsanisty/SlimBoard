@@ -20,6 +20,7 @@ class UserController extends BaseController
         parent::__construct();
         $this->data['menu_active'] = 'user';
     }
+
     /**
      * display list of resource
      */
