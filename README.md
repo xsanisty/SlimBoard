@@ -113,7 +113,8 @@ file : app/models/Book.php
 class Book Extends Model{}
 ```
 >Note: Eloquent has some limitations due to dependency to some Laravel's and Symfony's components which is not included,
-such as ```remember()``` method, which is depend on ```Illuminate\Cache```, ```Illuminate\Filesystem```, ```Symfony\Finder```  (for FileStore Driver)
+such as ```remember()```, ```paginate```, and validation method, which is depend on ```Illuminate\Cache```, ```Illuminate\Filesystem```,
+```Symfony\Finder```, etc.
 
 ####Controller
 Controllers are located in ```app/controllers``` directory, you may extends the BaseController to get access to predefined helper.
