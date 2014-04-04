@@ -38,14 +38,30 @@
     top: 0px;
 }
 .menu_active > a {
-    color: #0636BA;
-    background: #f4f4f4;
+    color: #ffffff;
+    background: #88bbff;
 }
+.menu_active > a:focus, .menu_active > a:hover {
+    color: #666;
+}
+
 
 #page-wrapper{
     min-height: 0;
 }
 
+#loader{
+    display:none;
+}
+
+/** modal customisation */
+.modal-header{
+    padding: 10px 15px;
+}
+
+.modal-footer{
+    padding: 10px 20px;
+}
 
 @media(min-width:768px) {
     .navbar-static-side {
