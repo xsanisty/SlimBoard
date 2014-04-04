@@ -14,7 +14,7 @@
     "require": {
         "php": ">= 5.3.0",
         "slim/slim": "2.4.*",
-        "slim/views":"dev-develop",
+        "slim/views":"0.1.2",
         "twig/twig": "1.*",
         "twig/extensions": "*",
         "itsgoingd/slim-facades": "dev-master",
@@ -34,14 +34,15 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "chmod 777 -R app/storage"
+            "chmod 777 -R app/storage",
+            "php migrate.php"
         ],
         "post-update-cmd": [
-            "php migrate.php",
             "rm -rf app/storage/cache/*"
         ],
         "post-create-project-cmd": [
-            "chmod 777 -R app/storage"
+            "chmod 777 -R app/storage",
+            "php migrate.php"
         ]
     },
     "config": {

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d9703953f02d548c57a3676f58f8bf56",
+    "hash": "7a0892c65ed281081f5864f476e10dc6",
     "packages": [
         {
             "name": "cartalyst/sentry",
@@ -158,12 +158,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "f9a2886677f5f26e02116fc82ad7f03dc36cf3f1"
+                "reference": "a96bd94ffa1fff406fd29fde57ccfa654ede0880"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/f9a2886677f5f26e02116fc82ad7f03dc36cf3f1",
-                "reference": "f9a2886677f5f26e02116fc82ad7f03dc36cf3f1",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/a96bd94ffa1fff406fd29fde57ccfa654ede0880",
+                "reference": "a96bd94ffa1fff406fd29fde57ccfa654ede0880",
                 "shasum": ""
             },
             "require": {
@@ -211,7 +211,7 @@
                 "orm",
                 "sql"
             ],
-            "time": "2014-03-23 08:30:28"
+            "time": "2014-03-28 17:52:02"
         },
         {
             "name": "illuminate/events",
@@ -491,17 +491,17 @@
         },
         {
             "name": "slim/views",
-            "version": "dev-develop",
+            "version": "0.1.2",
             "target-dir": "Slim/Views",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeguy/Slim-Views.git",
-                "reference": "0c5069b8b95a73484498ae65694a044fa5ccdbff"
+                "reference": "f0a05ea0b654218e40de692ed7cddcad1cf4b828"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeguy/Slim-Views/zipball/0c5069b8b95a73484498ae65694a044fa5ccdbff",
-                "reference": "0c5069b8b95a73484498ae65694a044fa5ccdbff",
+                "url": "https://api.github.com/repos/codeguy/Slim-Views/zipball/f0a05ea0b654218e40de692ed7cddcad1cf4b828",
+                "reference": "f0a05ea0b654218e40de692ed7cddcad1cf4b828",
                 "shasum": ""
             },
             "require": {
@@ -541,7 +541,7 @@
                 "slimphp",
                 "templating"
             ],
-            "time": "2014-03-11 12:08:02"
+            "time": "2014-04-03 16:31:10"
         },
         {
             "name": "twig/extensions",
@@ -598,12 +598,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "dab8d90755a7c1a54cd20be5098f5b5bf3346d9b"
+                "reference": "c8366374d9d531029a6b031528b552c37e1b2e66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/dab8d90755a7c1a54cd20be5098f5b5bf3346d9b",
-                "reference": "dab8d90755a7c1a54cd20be5098f5b5bf3346d9b",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/c8366374d9d531029a6b031528b552c37e1b2e66",
+                "reference": "c8366374d9d531029a6b031528b552c37e1b2e66",
                 "shasum": ""
             },
             "require": {
@@ -647,7 +647,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-03-15 10:50:05"
+            "time": "2014-03-30 17:23:57"
         }
     ],
     "packages-dev": [
@@ -658,7 +658,6 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "slim/views": 20,
         "itsgoingd/slim-facades": 20
     },
     "platform": {
