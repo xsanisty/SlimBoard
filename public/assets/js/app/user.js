@@ -9,6 +9,8 @@ $(function(){
      * }
      */
 
+    var $loader = $('#loader');
+
     /**
      * reset the form and show it!
      */
@@ -26,6 +28,10 @@ $(function(){
      */
     $('#user-table').on('click', '.btn-user-edit', function(e){
         var $userid = $(this).attr('data-id');
+
+        e.preventDefault();
+        $loader.show();
+
         $.get(global.baseUrl+'admin/user/'+$userid, function(resp){
             if(resp.success){
                 $('#user-form-data').each(function(){
@@ -46,6 +52,8 @@ $(function(){
                     location.reload();
                 }
             }
+
+            $loader.hide();
         });
     });
 
@@ -53,9 +61,11 @@ $(function(){
      * send DELETE request to the resouce server
      */
     $('#user-table').on('click', '.btn-user-delete', function(e){
-        e.preventDefault();
         var $userid = $(this).attr('data-id');
+        e.preventDefault();
+
         if(confirm('Are you sure to delete this user?')){
+            $loader.show();
             $.ajax({
                 url    : global.baseUrl+'admin/user/'+$userid,
                 method : 'DELETE',
@@ -71,12 +81,13 @@ $(function(){
                             location.reload();
                         }
                     }
+                    $loader.hide();
                 }
             });
         }
     });
 
-    /** 
+    /**
      * send POST request to save data to resource server
      * or send PUT request to update data on resource server
      * based on data-method value
@@ -84,13 +95,14 @@ $(function(){
     $('#btn-user-save').click(function(e){
         e.preventDefault();
 
-        var $button = $(this);
-        var $userdata = $('#user-form-data').serialize();
-        var $method = $(this).attr('data-method');
-        var $url = ($method == 'POST') ? global.baseUrl+'admin/user' : global.baseUrl+'admin/user/'+$('#user_id').val();
+        var $button = $(this),
+            $userdata = $('#user-form-data').serialize(),
+            $method = $(this).attr('data-method'),
+            $url = ($method == 'POST') ? global.baseUrl+'admin/user' : global.baseUrl+'admin/user/'+$('#user_id').val();
 
         $button.prop('disabled', true);
         $button.html('saving...');
+        $loader.show();
 
         $.ajax({
             url: $url,
@@ -100,7 +112,8 @@ $(function(){
 
                 $button.prop('disabled', false);
                 $button.html('save');
-                
+                $loader.hide();
+
                 if(resp.success){
 
                     user = resp.data;
