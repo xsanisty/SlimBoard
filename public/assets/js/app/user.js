@@ -126,14 +126,9 @@ $(function(){
                                 '<td>'+user.first_name+'</td>'+
                                 '<td>'+user.last_name+'</td>'+
                                 '<td>'+user.email+'</td>'+
-                                '<td>'+
-                                    '<div class="dropdown text-center">'+
-                                        '<a class="btn btn-primary btn-sm" href="#" data-toggle="dropdown">Action <b class="caret"></b></a>'+
-                                        '<ul aria-labelledby="dLabel" role="menu" class="dropdown-menu pull-right">'+
-                                            '<li class="text-left"><a data-id="'+user.id+'" class="btn-user-edit" href="#">Edit</a></li>'+
-                                            '<li class="text-left"><a data-id="'+user.id+'" class="btn-user-delete" href="#">Remove</a></li>'+
-                                        '</ul>'+
-                                    '</div>'+
+                                '<td class="text-center">'+
+                                    '<a data-id="'+user.id+'" class="btn btn-xs btn-primary btn-user-edit" href="#"><i class="fa fa-edit fa-fw"></i>Edit</a>'+
+                                    '<a data-id="'+user.id+'" class="btn btn-xs btn-danger btn-user-delete" href="#"><i class="fa fa-times fa-fw"></i>Remove</a>'+
                                 '</td>'+
                             '</tr>'
                         );
