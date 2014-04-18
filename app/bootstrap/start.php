@@ -35,11 +35,16 @@ $app->view->parserExtensions = array(
     new \Slim\Views\TwigExtension(),
 );
 
+
 /**
  * Initialize the Slim Facade class
  */
 \SlimFacades\Facade::setFacadeApplication($app);
 \SlimFacades\Facade::registerAliases($config['aliases']);
+
+
+/** extending Twig Loader */
+$twigEnvironment = View::getInstance();
 
 /**
  * Publish the configuration to Slim instance so controller have access to it via
@@ -54,7 +59,7 @@ foreach ($config as $configKey => $configVal) {
             }
         }
     }
-    
+
 }
 
 /**

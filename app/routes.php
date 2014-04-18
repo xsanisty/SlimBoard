@@ -38,6 +38,17 @@ Route::group(
             Route::get('/:id/edit', 'Admin\UserController:edit');
             Route::delete('/:id', 'Admin\UserController:destroy');
         });
+
+        /** grouping group inside admin group to indicate resource */
+        Route::group('/group', function(){
+            Route::get('/', 'Admin\GroupController:index');
+            Route::get('/page/:page', 'Admin\GroupController:index');
+            Route::post('/', 'Admin\GroupController:store');
+            Route::get('/:id', 'Admin\GroupController:show');
+            Route::put('/:id', 'Admin\GroupController:update');
+            Route::get('/:id/edit', 'Admin\GroupController:edit');
+            Route::delete('/:id', 'Admin\GroupController:destroy');
+        });
     }
 );
 
