@@ -128,7 +128,7 @@ $(function(){
                                 '<td>'+user.email+'</td>'+
                                 '<td class="text-center">'+
                                     '<a data-id="'+user.id+'" class="btn btn-xs btn-primary btn-user-edit" href="#"><i class="fa fa-edit fa-fw"></i>Edit</a>'+
-                                    '<a data-id="'+user.id+'" class="btn btn-xs btn-danger btn-user-delete" href="#"><i class="fa fa-times fa-fw"></i>Remove</a>'+
+                                    '<a data-id="'+user.id+'" class="btn btn-xs btn-danger btn-user-delete" href="#" style="margin-left: 5px"><i class="fa fa-times fa-fw"></i>Remove</a>'+
                                 '</td>'+
                             '</tr>'
                         );

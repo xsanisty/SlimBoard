@@ -1,3 +1,23 @@
+/** navbar customisation */
+.navbar{
+    min-height: 30px
+}
+
+.navbar-top-links li a {
+    min-height: 30px;
+    padding: 10px 15px;
+}
+
+.navbar-brand{
+    padding: 15px 15px 10px;
+}
+
+img.navbar-logo{
+    height:30px;
+    margin: 5px 10px;
+    float:left;
+}
+
 .page-header-box  h3, .page-header-box  a{
     margin-top:15px;
     border-bottom: none;
@@ -8,6 +28,7 @@
     margin-bottom: 20px;
 }
 
+/** sidebar arrow */
 .pointer {
     position: absolute;
     right: 20px;
@@ -37,6 +58,8 @@
     z-index: 1001;
     top: 0px;
 }
+
+/** sidebar active */
 .menu_active > a {
     color: #ffffff;
     background: #88bbff;
@@ -55,12 +78,18 @@
 }
 
 /** modal customisation */
-.modal-header{
-    padding: 10px 15px;
+.modal-header, .modal-footer{
+    padding: 5px 20px;
+    background: #eee;
 }
 
+.modal-header{
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
 .modal-footer{
-    padding: 10px 20px;
+     border-bottom-left-radius: 5px;
+     border-bottom-right-radius: 5px;
 }
 
 @media(min-width:768px) {
