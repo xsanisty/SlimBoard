@@ -28,7 +28,8 @@
             "" : [
                 "app/controllers/",
                 "app/models/",
-                "app/middlewares/"
+                "app/middlewares/",
+                "app/modules"
             ]
         }
     },

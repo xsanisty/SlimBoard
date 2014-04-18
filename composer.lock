@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "7a0892c65ed281081f5864f476e10dc6",
+    "hash": "e0f32c7b4fe1bbe1499e53fd54c42dcf",
     "packages": [
         {
             "name": "cartalyst/sentry",
@@ -158,12 +158,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "a96bd94ffa1fff406fd29fde57ccfa654ede0880"
+                "reference": "c3bfb08451192dd1c23e06242a8f1b3a7e6ddd11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/a96bd94ffa1fff406fd29fde57ccfa654ede0880",
-                "reference": "a96bd94ffa1fff406fd29fde57ccfa654ede0880",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/c3bfb08451192dd1c23e06242a8f1b3a7e6ddd11",
+                "reference": "c3bfb08451192dd1c23e06242a8f1b3a7e6ddd11",
                 "shasum": ""
             },
             "require": {
@@ -211,7 +211,7 @@
                 "orm",
                 "sql"
             ],
-            "time": "2014-03-28 17:52:02"
+            "time": "2014-04-11 21:11:09"
         },
         {
             "name": "illuminate/events",
@@ -269,12 +269,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "72b35eefce7030a1f4753c7ba0b740d2727dc01c"
+                "reference": "7010086da0d76ab934f44defddf5f6108a1ab546"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/72b35eefce7030a1f4753c7ba0b740d2727dc01c",
-                "reference": "72b35eefce7030a1f4753c7ba0b740d2727dc01c",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/7010086da0d76ab934f44defddf5f6108a1ab546",
+                "reference": "7010086da0d76ab934f44defddf5f6108a1ab546",
                 "shasum": ""
             },
             "require": {
@@ -312,7 +312,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-03-23 08:30:28"
+            "time": "2014-04-11 02:33:06"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -445,16 +445,16 @@
         },
         {
             "name": "slim/slim",
-            "version": "2.4.2",
+            "version": "2.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeguy/Slim.git",
-                "reference": "3a2ac723f17b5d81607287ff28575d38b9fbc70e"
+                "reference": "4906b77a07c7bd6ff1a99aea903e940a2d4fa106"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeguy/Slim/zipball/3a2ac723f17b5d81607287ff28575d38b9fbc70e",
-                "reference": "3a2ac723f17b5d81607287ff28575d38b9fbc70e",
+                "url": "https://api.github.com/repos/codeguy/Slim/zipball/4906b77a07c7bd6ff1a99aea903e940a2d4fa106",
+                "reference": "4906b77a07c7bd6ff1a99aea903e940a2d4fa106",
                 "shasum": ""
             },
             "require": {
@@ -487,7 +487,7 @@
                 "rest",
                 "router"
             ],
-            "time": "2014-02-16 18:18:25"
+            "time": "2014-04-05 18:33:59"
         },
         {
             "name": "slim/views",
@@ -598,12 +598,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "c8366374d9d531029a6b031528b552c37e1b2e66"
+                "reference": "af6910e1a73eca5ed0adaaa26adfb6c3f92e7eb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/c8366374d9d531029a6b031528b552c37e1b2e66",
-                "reference": "c8366374d9d531029a6b031528b552c37e1b2e66",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/af6910e1a73eca5ed0adaaa26adfb6c3f92e7eb7",
+                "reference": "af6910e1a73eca5ed0adaaa26adfb6c3f92e7eb7",
                 "shasum": ""
             },
             "require": {
@@ -647,7 +647,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-03-30 17:23:57"
+            "time": "2014-04-15 20:49:49"
         }
     ],
     "packages-dev": [
