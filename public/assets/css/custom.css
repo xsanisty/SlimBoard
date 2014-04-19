@@ -12,6 +12,16 @@
     padding: 15px 15px 10px;
 }
 
+.navbar-inverse .navbar-brand{
+    color: #ddd;
+}
+
+.navbar-inverse{
+    background: linear-gradient(to bottom, #2C3742 0%, #28303A 100%);
+    border-bottom: 1px solid #191E23;
+    color:#ddd;
+}
+
 img.navbar-logo{
     height:30px;
     margin: 5px 10px;
@@ -59,13 +69,19 @@ img.navbar-logo{
     top: 0px;
 }
 
+
+.navbar-static-side a{
+    color:#33455A;
+}
+
 /** sidebar active */
 .menu_active > a {
     color: #ffffff;
-    background: #88bbff;
+    background: #33455A;
 }
-.menu_active > a:focus, .menu_active > a:hover {
-    color: #666;
+.nav > li.menu_active > a:focus, .nav > li.menu_active > a:hover {
+    color: #ffffff;
+    background: #33455A;
 }
 
 
