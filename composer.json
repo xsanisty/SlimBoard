@@ -36,14 +36,14 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "chmod 777 -R app/storage",
+            "chmod -R 777 app/storage",
             "php migrate.php"
         ],
         "post-update-cmd": [
             "rm -rf app/storage/cache/*"
         ],
         "post-create-project-cmd": [
-            "chmod 777 -R app/storage",
+            "chmod -R 777 app/storage",
             "php migrate.php"
         ]
     },

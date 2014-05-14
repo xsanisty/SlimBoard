@@ -31,13 +31,13 @@ $composer install
 Alternatively, you can use ```composer create-project``` to install SlimStarter without downloading zip or cloning this repo.
 
 ```
-composer create-project xsanisty/slim-starter
+composer create-project xsanisty/slim-starter --stability="dev"
 ```
 
 #####3 Setup Permission
 After composer finished install the dependencies, you need to change file and folder permission.
 ```
-chmod 777 -R app/storage/
+chmod -R 777 app/storage/
 chmod 666 app/config/database.php
 ```
 
