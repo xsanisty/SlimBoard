@@ -3,7 +3,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 class InstallController extends BaseController
 {
-    
+
     /**
      * display database configuration form
      */
@@ -34,7 +34,27 @@ class InstallController extends BaseController
         try{
             $this->makeConnection($config);
 
-            $tables = Capsule::select('show tables');
+            /**
+             * Just trying to show tables with current connection
+             */
+            switch ($config['driver']) {
+                case 'mysql':
+                    $tables = Capsule::select('show tables');
+                    break;
+
+                case 'sqlite':
+                    $tables = Capsule::select("SELECT * FROM sqlite_master WHERE type='table'");
+                    break;
+
+                case 'sqlsrv':
+                    $tables = Capsule::select("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'");
+                    break;
+
+                case 'pgsql':
+                    $tables = Capsule::select("SELECT * FROM pg_catalog.pg_tables");
+                    break;
+            }
+
 
             $success = true;
             $message = 'Successfully connected!';
@@ -61,21 +81,28 @@ class InstallController extends BaseController
     {
         $configFile= APP_PATH.'config/database.php';
         $config    = $this->getPostConfiguration();
+
         $configStr = <<<CONFIG
 <?php
 
 \$config['database'] = array(
-    'driver'    => '{$config['driver']}',
-    'host'      => isset(\$_SERVER['DB1_HOST']) ? \$_SERVER['DB1_HOST'] : '{$config['host']}',
-    'database'  => isset(\$_SERVER['DB1_NAME']) ? \$_SERVER['DB1_NAME'] : '{$config['database']}',
-    'username'  => isset(\$_SERVER['DB1_USER']) ? \$_SERVER['DB1_USER'] : '{$config['username']}',
-    'password'  => isset(\$_SERVER['DB1_PASS']) ? \$_SERVER['DB1_PASS'] : '{$config['password']}',
-    'charset'   => '{$config['charset']}',
-    'collation' => '{$config['collation']}',
-    'prefix'    => '{$config['prefix']}',
+    'default'       => '{$config['driver']}',
+
+    'connections'   => array(
+        '{$config['driver']}'     => array(
+            'driver'    => '{$config['driver']}',
+            'host'      => isset(\$_SERVER['DB1_HOST']) ? \$_SERVER['DB1_HOST'] : '{$config['host']}',
+            'database'  => isset(\$_SERVER['DB1_NAME']) ? \$_SERVER['DB1_NAME'] : '{$config['database']}',
+            'username'  => isset(\$_SERVER['DB1_USER']) ? \$_SERVER['DB1_USER'] : '{$config['username']}',
+            'password'  => isset(\$_SERVER['DB1_PASS']) ? \$_SERVER['DB1_PASS'] : '{$config['password']}',
+            'charset'   => '{$config['charset']}',
+            'collation' => '{$config['collation']}',
+            'prefix'    => '{$config['prefix']}'
+        )
+    )
 );
 CONFIG;
-        
+
         file_put_contents($configFile, $configStr);
 
         $this->makeConnection($config);
@@ -90,10 +117,20 @@ CONFIG;
      */
     private function getPostConfiguration()
     {
+        $driver     = Input::post('dbdriver');
+        $database   = Input::post('dbname');
+
+        /**
+         * point to APP_PATH/storage/db if driver is sqlite
+         */
+        if($driver == 'sqlite'){
+            $database = APP_PATH.'storage/db/'.$database.'.sqlite';
+        }
+
         return array(
-            'driver'    => Input::post('dbdriver'),
+            'driver'    => $driver,
             'host'      => Input::post('dbhost'),
-            'database'  => Input::post('dbname'),
+            'database'  => $database,
             'username'  => Input::post('dbuser'),
             'password'  => Input::post('dbpass'),
             'charset'   => 'utf8',
@@ -153,7 +190,7 @@ CONFIG;
             });
         }
 
-        /** 
+        /**
          * create table for sentry group
          */
         if (!Capsule::schema()->hasTable('groups')){
