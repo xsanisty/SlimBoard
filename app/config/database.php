@@ -1,7 +1,7 @@
 <?php
 
 $config['database'] = array(
-    'default'       => 'mysql',
+    'default'       => 'sqlite',
 
     'connections'   => array(
 

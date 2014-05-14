@@ -1,4 +1,7 @@
 <?php
+
+define('APP_PATH'   , __DIR__.'/app/');
+
 $config = array();
 require __DIR__.'/vendor/autoload.php';
 require __DIR__.'/app/config/database.php';
@@ -25,7 +28,7 @@ class Migrator{
             $capsule->addConnection($config);
             $capsule->setAsGlobal();
             $capsule->bootEloquent();
-            
+
             Sentry::setupDatabaseResolver($capsule->connection()->getPdo());
 
         }catch(Exception $e){
@@ -66,7 +69,7 @@ class Migrator{
             });
         }
 
-        /** 
+        /**
          * create table for sentry group
          */
         if (!Capsule::schema()->hasTable('groups')){
@@ -145,7 +148,7 @@ class Migrator{
     }
 }
 
-$migrator = new Migrator($config['database']);
+$migrator = new Migrator($config['database']['connections'][$config['database']['default']]);
 
 $migrator->migrate();
 $migrator->seed();
