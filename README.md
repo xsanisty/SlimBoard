@@ -23,7 +23,7 @@ with username ```admin@admin.com``` and password ```password```.
 #####1 Manual Install
 You can manually install SlimStarter by cloning this repo or download the zip file from this repo, and run ```composer install```.
 ```
-$git clone https://github.com/ikhsan017/SlimStarter.git .
+$git clone https://github.com/xsanisty/SlimStarter.git .
 $composer install
 ```
 
