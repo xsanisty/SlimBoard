@@ -3,8 +3,10 @@
 session_cache_limiter(false);
 session_start();
 
+define('ROOT_PATH'  , __DIR__.'/../../');
 define('VENDOR_PATH', __DIR__.'/../../vendor/');
-define('APP_PATH', __DIR__.'/../../app/');
+define('APP_PATH'   , __DIR__.'/../../app/');
+define('MODULE_PATH', __DIR__.'/../../app/modules/');
 define('PUBLIC_PATH', __DIR__.'/../../public/');
 
 require VENDOR_PATH.'autoload.php';
@@ -12,7 +14,12 @@ require VENDOR_PATH.'autoload.php';
 /**
  * Load the configuration
  */
-$config = array();
+$config = array(
+    'path.root'     => ROOT_PATH,
+    'path.public'   => PUBLIC_PATH,
+    'path.app'      => APP_PATH,
+    'path.module'   => MODULE_PATH
+);
 
 foreach (glob(APP_PATH.'config/*.php') as $configFile) {
     require $configFile;
@@ -43,9 +50,6 @@ $app->view->parserExtensions = array(
 \SlimFacades\Facade::registerAliases($config['aliases']);
 
 
-/** extending Twig Loader */
-$twigEnvironment = View::getInstance();
-
 /**
  * Publish the configuration to Slim instance so controller have access to it via
  */
@@ -53,7 +57,7 @@ foreach ($config as $configKey => $configVal) {
     if($configKey != 'slim'){
         $app->config($configKey, $configVal);
 
-        if($configKey != 'cookies'){
+        if($configKey != 'cookies' && is_array($configVal)){
             foreach($configVal as $subConfigKey => $subConfigVal){
                 $app->config($configKey.'.'.$subConfigKey, $subConfigVal);
             }

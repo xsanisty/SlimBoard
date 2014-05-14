@@ -80,10 +80,16 @@ class UserController extends BaseController
         try{
             $user = Sentry::findUserById($id);
             //display edit form in non-ajax request
+            //
+            $this->data['title'] = 'Edit User';
+            $this->data['user'] = $user->toArray();
+
+            View::display('admin/user/edit.twig', $this->data);
         }catch(UserNotFoundException $e){
             App::notFound();
         }catch(Exception $e){
-            App::error();
+            Response::setBody($e->getMessage());
+            Response::finalize();
         }
     }
 

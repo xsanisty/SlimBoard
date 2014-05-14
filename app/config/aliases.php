@@ -11,6 +11,9 @@ $config['aliases'] = array(
     'Log'       => 'SlimFacades\Log',
     'Request'   => 'SlimFacades\Request',
     'Response'  => 'SlimFacades\Response',
-    'Route'     => 'SlimFacades\Route',
     'View'      => 'SlimFacades\View',
+    'Route'     => 'SlimStarter\Facade\RouteFacade',
+    'DB'        => 'SlimStarter\Facade\DatabaseFacade',
+    'Module'    => 'SlimStarter\Facade\ModuleManagerFacade',
+    'Menu'      => 'SlimStarter\Facade\MenuManagerFacade'
 );
