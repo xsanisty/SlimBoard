@@ -3,14 +3,14 @@
 {% block body %}
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 text-center">
+        <div class="col-md-8 col-md-offset-2 text-center">
             <h3 class="page-header">SlimStarter Install</h3>
         </div>
     </div>
     <!-- /.row -->
 
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
+        <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
             <div class="login-panel panel panel-default" style="margin-top:10px">
                     <div class="panel-heading">
                         <h3 class="panel-title">Configure Database Connection</h3>
@@ -21,36 +21,53 @@
                         </div>
                         <form role="form" id="dbsettings" method="post" action="{{baseUrl}}install.php/db/configure" class="form-horizontal">
                             <fieldset>
+
                                 <div class="form-group">
-                                    <label for="dbhost" class="control-label col-lg-3">Database Server</label>
-                                    <div class="col-lg-9">
-                                        <input class="form-control" placeholder="Database Server" name="dbhost" type="text" autofocus>
+                                    <label for="dbdriver" class="control-label col-md-3">Database Driver</label>
+                                    <div class="col-md-9">
+                                        <select class="form-control" placeholder="Database Driver" name="dbdriver" id="dbdriver">
+                                            <option value="mysql">MySQL</option>
+                                            <option value="sqlite">SQLite</option>
+                                            <option value="pgsql">PostgreSQL</option>
+                                            <option value="sqlsrv">MS SQL</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="dbname" class="control-label col-lg-3">Database Name</label>
-                                    <div class="col-lg-9">
+
+                                <div class="form-group config mysql sqlsrv pgsql">
+                                    <label for="dbhost" class="control-label col-md-3">Database Host</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" placeholder="Database Server" name="dbhost" id="dbhost" type="text" autofocus>
+                                    </div>
+                                </div>
+                                <div class="form-group config mysql sqlite sqlsrv pgsql">
+                                    <label for="dbname" class="control-label col-md-3">Database Name</label>
+                                    <div class="col-md-9">
                                         <input class="form-control" placeholder="Database Name" name="dbname" id="dbname" type="text">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="dbuser" class="control-label col-lg-3">Username</label>
-                                    <div class="col-lg-9">
+                                <div class="form-group config pgsql">
+                                    <label for="schema" class="control-label col-md-3">Schema Name</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" placeholder="Schema Name" name="schema" id="schema" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group config mysql sqlite sqlsrv pgsql">
+                                    <label for="prefix" class="control-label col-md-3">Prefix</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" placeholder="Table Prefix" name="prefix" id="prefix" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group config mysql sqlsrv pgsql">
+                                    <label for="dbuser" class="control-label col-md-3">Username</label>
+                                    <div class="col-md-9">
                                         <input class="form-control" placeholder="Username" name="dbuser" id="dbuser" type="text">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="dbpass" class="control-label col-lg-3">Password</label>
-                                    <div class="col-lg-9">
+                                <div class="form-group config mysql sqlsrv pgsql">
+                                    <label for="dbpass" class="control-label col-md-3">Password</label>
+                                    <div class="col-md-9">
                                         <input class="form-control" placeholder="password" name="dbpass" id="dbpass" type="password">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="dbdriver" class="control-label col-lg-3">Database Driver</label>
-                                    <div class="col-lg-9">
-                                        <select class="form-control" placeholder="Database Driver" name="dbdriver">
-                                            <option value="mysql">MySQL</option>
-                                        </select>
                                     </div>
                                 </div>
 

@@ -1,9 +1,9 @@
 $(function(){
     $('#checkConnection').click(function(e){
         e.preventDefault();
-        var $this = $(this);
-        var $dbsettings = $('#dbsettings').serialize();
-        var $alert = $('#alert');
+        var $this = $(this),
+            $dbsettings = $('#dbsettings').serialize(),
+            $alert = $('#alert');
 
         $this.prop('disabled', true);
         $this.html('Checking Connection...');
@@ -33,4 +33,18 @@ $(function(){
             }
         });
     });
+
+    $('#dbdriver').change(function(){
+        var $driver = $(this).val();
+
+        $('#dbsettings .config').each(function(){
+            var $div = $(this);
+            if($div.hasClass($driver)){
+                $div.show();
+            }else{
+                $div.hide();
+            }
+        });
+    }).trigger('change');
+
 });
