@@ -97,11 +97,32 @@ Route group
 /** Route group to book resource */
 Route::group('/book', function(){
     Route::get('/', 'BookController:index'); // GET /book
+    Route::post('/', 'BookController:store'); // POST /book
+    Route::get('/create', 'BookController:create'); // Create form of /book
     Route::get('/:id', 'BookController:show'); // GET /book/:id
     Route::get('/:id/edit', 'BookController:edit'); // GET /book/:id/edit
     Route::put('/:id', 'BookController:update'); // PUT /book/:id
     Route::delete('/:id', 'BookController:destroy'); // DELETE /book/:id
 });
+```
+
+Route Resource
+this will have same effect on route group above like Laravel Route::resource
+```php
+/** Route to book resource */
+Route::resource('/book', 'BookController');
+```
+
+RouteController
+```php
+/** Route to book resource */
+Route::controller('/book', 'BookController');
+
+/**
+ * GET /book will be mapped to BookController:getIndex
+ * POST /book will be mapped to BookController:postIndex
+ * [METHOD] /book/[path] will be mapped to BookController:methodPath
+ */
 ```
 
 ####Model
