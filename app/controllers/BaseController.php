@@ -178,7 +178,7 @@ class BaseController
      * remove individual js file from queue list
      * @param  [string] $js [js file to be removed]
      */
-    protected function remmoveJs($js)
+    protected function removeJs($js)
     {
         $key=array_keys($this->data['js']['internal'],$js);
         if($key){
