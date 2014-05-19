@@ -20,17 +20,18 @@
         "itsgoingd/slim-facades": "dev-master",
         "illuminate/database" : "4.*",
         "cartalyst/sentry" : "2.*",
-        "ircmaxell/password-compat": "1.0.*"
+        "ircmaxell/password-compat": "1.0.*",
+        "symfony/translation": "2.4.*"
 
     },
     "autoload": {
         "psr-4": {
             "" : [
-                "src",
+                "src/",
                 "app/controllers/",
                 "app/models/",
                 "app/middlewares/",
-                "app/modules"
+                "app/modules/"
             ]
         }
     },

@@ -1,6 +1,9 @@
 <?php
 
 $config['slim'] = array(
+    // Modular
+    'modular'       => true,
+
     // Application
     'mode'          => 'development',
 

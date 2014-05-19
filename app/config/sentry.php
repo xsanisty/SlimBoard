@@ -1,0 +1,5 @@
+<?php
+
+$config['sentry'] = array(
+
+);

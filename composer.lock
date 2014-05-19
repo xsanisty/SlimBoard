@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "c2eefc0cda867b0900462f2f4b9c64e8",
+    "hash": "e8195652cf61a56e2f9b4b0e29bf3181",
     "packages": [
         {
             "name": "cartalyst/sentry",
@@ -158,12 +158,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "e4f54da1aac93e12c416aae128aa0b50b93797d5"
+                "reference": "626069648ee589e3c967211a4a0c116e9f8fc548"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/e4f54da1aac93e12c416aae128aa0b50b93797d5",
-                "reference": "e4f54da1aac93e12c416aae128aa0b50b93797d5",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/626069648ee589e3c967211a4a0c116e9f8fc548",
+                "reference": "626069648ee589e3c967211a4a0c116e9f8fc548",
                 "shasum": ""
             },
             "require": {
@@ -211,7 +211,7 @@
                 "orm",
                 "sql"
             ],
-            "time": "2014-05-11 17:59:45"
+            "time": "2014-05-16 17:54:20"
         },
         {
             "name": "illuminate/events",
@@ -544,6 +544,63 @@
             "time": "2014-04-03 16:31:10"
         },
         {
+            "name": "symfony/translation",
+            "version": "2.4.x-dev",
+            "target-dir": "Symfony/Component/Translation",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Translation.git",
+                "reference": "b19285ff60fe8d145d46f4c7e2175f9c135c1f6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Translation/zipball/b19285ff60fe8d145d46f4c7e2175f9c135c1f6c",
+                "reference": "b19285ff60fe8d145d46f4c7e2175f9c135c1f6c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/config": "~2.0",
+                "symfony/yaml": "~2.2"
+            },
+            "suggest": {
+                "symfony/config": "",
+                "symfony/yaml": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Translation\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Translation Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-05-12 09:27:48"
+        },
+        {
             "name": "twig/extensions",
             "version": "dev-master",
             "source": {
@@ -598,12 +655,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "cd4a3727386db46709f1c98f23622e6101f2a6eb"
+                "reference": "55253c3f37b1b47ad797eb95f27b0a33e3a76d2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/cd4a3727386db46709f1c98f23622e6101f2a6eb",
-                "reference": "cd4a3727386db46709f1c98f23622e6101f2a6eb",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/55253c3f37b1b47ad797eb95f27b0a33e3a76d2f",
+                "reference": "55253c3f37b1b47ad797eb95f27b0a33e3a76d2f",
                 "shasum": ""
             },
             "require": {
@@ -647,7 +704,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-05-12 14:45:36"
+            "time": "2014-05-15 19:43:48"
         }
     ],
     "packages-dev": [

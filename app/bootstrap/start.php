@@ -33,52 +33,35 @@ if(isset($config['cookies'])){
 }
 
 /**
- * Initialize Slim application
+ * Initialize Slim and SlimStarter application
  */
-$app = new \Slim\Slim($config['slim']);
+$app        = new \Slim\Slim($config['slim']);
+$starter    = new \SlimStarter\Bootstrap($app);
 
-$app->view->parserOptions = $config['twig'];
-$app->view->parserExtensions = array(
-    new \Slim\Views\TwigExtension(),
-);
-
-
-/**
- * Initialize the Slim Facade class
- */
-\SlimFacades\Facade::setFacadeApplication($app);
-\SlimFacades\Facade::registerAliases($config['aliases']);
-
-
-/**
- * Publish the configuration to Slim instance so controller have access to it via
- */
-foreach ($config as $configKey => $configVal) {
-    if($configKey != 'slim'){
-        $app->config($configKey, $configVal);
-
-        if($configKey != 'cookies' && is_array($configVal)){
-            foreach($configVal as $subConfigKey => $subConfigVal){
-                $app->config($configKey.'.'.$subConfigKey, $subConfigVal);
-            }
-        }
-    }
-
-}
+$starter->setConfig($config);
 
 /**
  * if called from the install script, disable all hooks, middlewares, and database init
  */
 if(!defined('INSTALL')){
 
-    /**
-     * Setting up Slim hooks and middleware
-     */
+    /** Setting up Slim hooks and middleware */
     require APP_PATH.'bootstrap/app.php';
 
-    /**
-     * Start the route
-     */
+    /** boot up SlimStarter */
+    $starter->boot();
+
+    /** registering modules */
+    foreach (glob(APP_PATH.'modules/*') as $module) {
+        $className = basename($module);
+        $moduleBootstrap = "\\$className\\Initialize";
+
+        $app->module->register(new $moduleBootstrap);
+    }
+
+    $app->module->boot();
+
+    /** Start the route */
     require APP_PATH.'routes.php';
 }
 

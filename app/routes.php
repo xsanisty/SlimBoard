@@ -44,9 +44,10 @@ Route::post('/login', 'Admin\AdminController:doLogin');
 /** Route to documentation */
 Route::get('/doc(/:page+)', 'DocController:index');
 
-/** default routing */
-Route::get('/', 'HomeController:welcome');
 
 foreach (Module::getModules() as $module) {
     $module->registerPublicRoute();
 }
+
+/** default routing */
+Route::get('/', 'HomeController:welcome');

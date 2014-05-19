@@ -3,13 +3,18 @@
 namespace SlimStarter\Module;
 
 use \Twig_Loader_Filesystem;
+use \Illuminate\Support\ClassLoader;
 
 class Manager{
     private $modules;
     private $app;
 
-    public function __construct(\Slim\Slim $app){
+    public function __construct(\Slim\Slim $app = null){
         $this->modules = array();
+        $this->app = $app;
+    }
+
+    public function setApp(\Slim\Slim $app){
         $this->app = $app;
     }
 
@@ -34,21 +39,25 @@ class Manager{
     }
 
     public function boot(){
-        $twigInstance       = $this->app->view->getEnvironment();
-        $twigLoader         = new Twig_Loader_Filesystem();
+
+        $twigInstance   = $this->app->view->getEnvironment();
+        $twigLoader     = new Twig_Loader_Filesystem();
 
         foreach ($this->modules as $module) {
             $prefixDir = $module->getModuleName();
+            $classPath = $module->getClassPath();
+            $modulePath= $this->app->config('path.module').$prefixDir.'/';
 
+            /** registering module view namespace */
             foreach ($module->getTemplatePath() as $namespace => $dir) {
-                $moduleTemplatePath = $this->app->config('path.module').$prefixDir.'/'.$dir;
+                $moduleTemplatePath = $modulePath.$dir;
                 $twigLoader->addPath($moduleTemplatePath, $namespace);
             }
 
             $module->boot();
         }
 
-        $twigLoader->addPath($this->app->config('path.app').'views');
+        $twigLoader->addPath($this->app->config('templates.path'));
 
 
         $twigInstance->setLoader($twigLoader);

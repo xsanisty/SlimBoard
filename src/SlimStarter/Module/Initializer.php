@@ -25,16 +25,19 @@ abstract class Initializer implements ModuleInterface
     public function getTemplatePath()
     {
         return array(
-            $this->getModuleName() => 'views'
+            $this->getModuleAccessor() => 'views'
+        );
+    }
+
+    public function getClassPath(){
+        return array(
+            'controllers',
+            'models'
         );
     }
 
     public function registerHook()
     {
-
-    }
-
-    public function applyHook(){
 
     }
 
