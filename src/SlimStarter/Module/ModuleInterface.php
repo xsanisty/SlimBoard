@@ -5,7 +5,6 @@ interface ModuleInterface{
     public function getModuleName();
     public function getModuleAccessor();
     public function getTemplatePath();
-    public function getClassPath();
     public function registerAdminRoute();
     public function registerAdminMenu();
     public function registerPublicRoute();

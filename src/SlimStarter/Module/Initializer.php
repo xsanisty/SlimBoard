@@ -29,13 +29,6 @@ abstract class Initializer implements ModuleInterface
         );
     }
 
-    public function getClassPath(){
-        return array(
-            'controllers',
-            'models'
-        );
-    }
-
     public function registerHook()
     {
 
