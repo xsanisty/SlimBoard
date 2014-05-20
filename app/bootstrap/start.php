@@ -44,12 +44,11 @@ $starter->setConfig($config);
  * if called from the install script, disable all hooks, middlewares, and database init
  */
 if(!defined('INSTALL')){
+    /** boot up SlimStarter */
+    $starter->boot();
 
     /** Setting up Slim hooks and middleware */
     require APP_PATH.'bootstrap/app.php';
-
-    /** boot up SlimStarter */
-    $starter->boot();
 
     /** registering modules */
     foreach (glob(APP_PATH.'modules/*') as $module) {
@@ -63,6 +62,8 @@ if(!defined('INSTALL')){
 
     /** Start the route */
     require APP_PATH.'routes.php';
+}else{
+    $starter->bootFacade($config['aliases']);
 }
 
-return $app;
+return $starter;

@@ -3,7 +3,6 @@
 namespace SlimStarter\Module;
 
 use \Twig_Loader_Filesystem;
-use \Illuminate\Support\ClassLoader;
 
 class Manager{
     private $modules;
@@ -45,7 +44,6 @@ class Manager{
 
         foreach ($this->modules as $module) {
             $prefixDir = $module->getModuleName();
-            $classPath = $module->getClassPath();
             $modulePath= $this->app->config('path.module').$prefixDir.'/';
 
             /** registering module view namespace */

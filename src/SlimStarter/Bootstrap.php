@@ -6,6 +6,16 @@ use \Illuminate\Database\Capsule\Manager as DatabaseManager;
 use \SlimStarter\Module\Manager as ModuleManager;
 use \SlimStarter\Helper\MenuManager;
 use \SlimFacades\Facade;
+use \Cartalyst\Sentry\Cookies\NativeCookie;
+use \Cartalyst\Sentry\Sessions\NativeSession;
+use \Cartalyst\Sentry\Groups\Eloquent\Provider as GroupProvider;
+use \Cartalyst\Sentry\Hashing\BcryptHasher;
+use \Cartalyst\Sentry\Hashing\NativeHasher;
+use \Cartalyst\Sentry\Hashing\Sha256Hasher;
+use \Cartalyst\Sentry\Hashing\WhirlpoolHasher;
+use \Cartalyst\Sentry\Sentry;
+use \Cartalyst\Sentry\Throttling\Eloquent\Provider as ThrottleProvider;
+use \Cartalyst\Sentry\Users\Eloquent\Provider as UserProvider;
 /**
  * SlimStarter Bootstrapper, initialize all the thing needed on the start
  */
@@ -84,7 +94,157 @@ class Bootstrap
      * @param  Array $config
      */
     public function bootSentry($config){
-        \Sentry::setupDatabaseResolver($this->app->db->connection()->getPdo());
+        $app = $this->app;
+        $this->app->container->singleton('sentry', function() use ($app, $config){
+
+            $hasherProvider     = $this->hasherProviderFactory($config);
+            $userProvider       = $this->userProviderFactory($hasherProvider, $config);
+            $groupProvider      = $this->groupProviderFactory($config);
+            $throttleProvider   = $this->throttleProviderFactory($userProvider, $config);
+
+            return new Sentry(
+                $userProvider,
+                $groupProvider,
+                $throttleProvider,
+                new NativeSession,
+                new NativeCookie,
+                $app->request->getIp()
+            );
+        });
+    }
+
+    /** Sentry specific factory, adopted from SentryServiceProvider */
+    protected function hasherProviderFactory($config){
+        $hasher  = $config['hasher'];
+        switch ($hasher)
+        {
+            case 'native':
+                return new NativeHasher;
+                break;
+
+            case 'bcrypt':
+                return new BcryptHasher;
+                break;
+
+            case 'sha256':
+                return new Sha256Hasher;
+                break;
+
+            case 'whirlpool':
+                return new WhirlpoolHasher;
+                break;
+        }
+
+        throw new \InvalidArgumentException("Invalid hasher [$hasher] chosen for Sentry.");
+    }
+
+    protected function userProviderFactory($hasher, $config){
+            $model = $config['users']['model'];
+
+            if (method_exists($model, 'setLoginAttributeName'))
+            {
+                $loginAttribute = $config['users']['login_attribute'];
+
+                forward_static_call_array(
+                    array($model, 'setLoginAttributeName'),
+                    array($loginAttribute)
+                );
+            }
+
+            // Define the Group model to use for relationships.
+            if (method_exists($model, 'setGroupModel'))
+            {
+                $groupModel = $config['groups']['model'];
+
+                forward_static_call_array(
+                    array($model, 'setGroupModel'),
+                    array($groupModel)
+                );
+            }
+
+            // Define the user group pivot table name to use for relationships.
+            if (method_exists($model, 'setUserGroupsPivot'))
+            {
+                $pivotTable = $config['user_groups_pivot_table'];
+
+                forward_static_call_array(
+                    array($model, 'setUserGroupsPivot'),
+                    array($pivotTable)
+                );
+            }
+
+            return new UserProvider($hasher, $model);
+    }
+
+    protected function groupProviderFactory($config){
+        $model = $config['groups']['model'];
+
+            // Define the User model to use for relationships.
+            if (method_exists($model, 'setUserModel'))
+            {
+                $userModel = $config['users']['model'];
+
+                forward_static_call_array(
+                    array($model, 'setUserModel'),
+                    array($userModel)
+                );
+            }
+
+            // Define the user group pivot table name to use for relationships.
+            if (method_exists($model, 'setUserGroupsPivot'))
+            {
+                $pivotTable = $config['user_groups_pivot_table'];
+
+                forward_static_call_array(
+                    array($model, 'setUserGroupsPivot'),
+                    array($pivotTable)
+                );
+            }
+
+            return new GroupProvider($model);
+    }
+
+    protected function throttleProviderFactory($userProvider,$config){
+        $model = $config['throttling']['model'];
+
+        $throttleProvider = new ThrottleProvider($userProvider, $model);
+
+            if ($config['throttling']['enabled'] === false)
+            {
+                $throttleProvider->disable();
+            }
+
+            if (method_exists($model, 'setAttemptLimit'))
+            {
+                $attemptLimit = $config['throttling']['attempt_limit'];
+
+                forward_static_call_array(
+                    array($model, 'setAttemptLimit'),
+                    array($attemptLimit)
+                );
+            }
+            if (method_exists($model, 'setSuspensionTime'))
+            {
+                $suspensionTime = $config['throttling']['suspension_time'];
+
+                forward_static_call_array(
+                    array($model, 'setSuspensionTime'),
+                    array($suspensionTime)
+                );
+            }
+
+            // Define the User model to use for relationships.
+            if (method_exists($model, 'setUserModel'))
+            {
+                $userModel = $config['users']['model'];
+
+                forward_static_call_array(
+                    array($model, 'setUserModel'),
+                    array($userModel)
+                );
+            }
+
+            return $throttleProvider;
     }
 
     /**
