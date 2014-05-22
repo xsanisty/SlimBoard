@@ -63,6 +63,9 @@ if(!defined('INSTALL')){
     /** Start the route */
     require APP_PATH.'routes.php';
 }else{
+    /** disregard sentry configuration on install */
+    $config['aliases']['Sentry'] = 'Cartalyst\Sentry\Facades\Native\Sentry';
+
     $starter->bootFacade($config['aliases']);
 }
 
