@@ -4,7 +4,7 @@ namespace SlimStarter;
 
 use \Illuminate\Database\Capsule\Manager as DatabaseManager;
 use \SlimStarter\Module\Manager as ModuleManager;
-use \SlimStarter\Helper\MenuManager;
+use \SlimStarter\Menu\MenuManager;
 use \SlimFacades\Facade;
 use \Cartalyst\Sentry\Cookies\NativeCookie;
 use \Cartalyst\Sentry\Sessions\NativeSession;
@@ -252,10 +252,23 @@ class Bootstrap
      * @param  Array $config
      */
     public function bootTwig($config){
-        $this->app->view->parserOptions = $config;
-        $this->app->view->parserExtensions = array(
+        $app    = $this->app;
+        $view   = $app->view;
+
+        $view->parserOptions = $config;
+        $view->parserExtensions = array(
             new \Slim\Views\TwigExtension(),
+            new \SlimStarter\TwigExtension\MenuRenderer()
         );
+    }
+
+    /**
+     * Boot up Menu Manager
+     */
+    public function bootMenuManager(){
+        $this->app->container->singleton('menu', function(){
+            return new MenuManager;
+        });
     }
 
     /**
@@ -264,6 +277,7 @@ class Bootstrap
      */
     public function boot(){
         $this->bootFacade($this->config['aliases']);
+        $this->bootMenuManager();
         $this->bootEloquent($this->config['database']);
         $this->bootModuleManager();
         $this->bootTwig($this->config['twig']);
