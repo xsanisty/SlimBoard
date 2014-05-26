@@ -12,30 +12,6 @@
             )
             | raw
         }}
-        <!--<ul class="nav" id="side-menu">
-            <li {{ menu_active == 'dashboard' ? 'class="menu_active"' }}>
-                {{ menu_active == 'dashboard' ? menu_pointer|raw }}
-                <a href="{{ menu_active == 'dashboard' ? '#' : siteUrl('/admin') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-            </li>
-            <li {{ menu_active in ['group', 'user'] ? 'class="active"' }}>
-                <a href="#">
-                    <i class="fa fa-cog fa-fw"></i> User &amp; Group <span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li {{ menu_active == 'user' ? 'class="menu_active"' }}>
-                        {{ menu_active == 'user' ? menu_pointer|raw }}
-                        <a href="{{ menu_active == 'user' ? '#' : siteUrl('/admin/user') }}"><i class="fa fa-user fa-fw"></i> Manage User</a>
-                    </li>
-                    <li {{ menu_active == 'group' ? 'class="menu_active"' }}>
-                        {{ menu_active == 'group' ? menu_pointer|raw }}
-                        <a href="{{ menu_active == 'group' ? '#' : siteUrl('/admin/group') }}"><i class="fa fa-group fa-fw"></i> Manage Group</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="visible-xs">
-                <a href="{{ urlFor('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout
-            </a>
-        </ul>-->
         <!-- /#side-menu -->
     </div>
     <!-- /.sidebar-collapse -->
