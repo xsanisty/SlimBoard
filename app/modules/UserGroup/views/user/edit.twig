@@ -1,0 +1,13 @@
+{% extends 'admin/index.twig' %}
+{% block content %}
+<div class="row page-header-box">
+    <div class="col-xs-12">
+        <h3>{{ title }}</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-7">
+        {% include '@usergroup/user/form.twig' %}
+    </div>
+</div>
+{% endblock %}

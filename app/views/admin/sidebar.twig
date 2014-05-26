@@ -1,6 +1,18 @@
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
-        <ul class="nav" id="side-menu">
+        {{
+            render_menu('admin_sidebar', 'ul',
+                {
+                    "attributes":{"class": "nav", "id":"side-menu"},
+                    "active" : {
+                        "class": "menu_active",
+                        "prepend" : "<div class='pointer'><div class='arrow'></div><div class='arrow_border'></div></div>"
+                    }
+                }
+            )
+            | raw
+        }}
+        <!--<ul class="nav" id="side-menu">
             <li {{ menu_active == 'dashboard' ? 'class="menu_active"' }}>
                 {{ menu_active == 'dashboard' ? menu_pointer|raw }}
                 <a href="{{ menu_active == 'dashboard' ? '#' : siteUrl('/admin') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
@@ -23,7 +35,7 @@
             <li class="visible-xs">
                 <a href="{{ urlFor('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout
             </a>
-        </ul>
+        </ul>-->
         <!-- /#side-menu -->
     </div>
     <!-- /.sidebar-collapse -->

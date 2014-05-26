@@ -28,9 +28,6 @@ Route::group(
         /** sample namespaced controller */
         Route::get('/', 'Admin\AdminController:index')->name('admin');
 
-        Route::resource('/user', 'Admin\UserController');
-        Route::resource('/group', 'Admin\GroupController');
-
         foreach (Module::getModules() as $module) {
             $module->registerAdminRoute();
         }

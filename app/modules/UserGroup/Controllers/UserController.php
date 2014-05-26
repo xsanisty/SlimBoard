@@ -1,15 +1,17 @@
 <?php
 
-namespace Admin;
+namespace UserGroup\Controllers;
 
 use \App;
 use \View;
+use \Menu;
 use \User;
+use \Input;
 use \Sentry;
 use \Request;
 use \Response;
-use \Input;
 use \Exception;
+use \Admin\BaseController;
 use \Cartalyst\Sentry\Users\UserNotFoundException;
 
 class UserController extends BaseController
@@ -18,7 +20,7 @@ class UserController extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this->data['menu_active'] = 'user';
+        Menu::get('admin_sidebar')->setActiveMenu('user');
     }
 
     /**
@@ -39,7 +41,7 @@ class UserController extends BaseController
         $this->publish('baseUrl', $this->data['baseUrl']);
 
         /** render the template */
-        View::display('admin/user/index.twig', $this->data);
+        View::display('@usergroup/user/index.twig', $this->data);
     }
 
     /**
@@ -84,7 +86,7 @@ class UserController extends BaseController
             $this->data['title'] = 'Edit User';
             $this->data['user'] = $user->toArray();
 
-            View::display('admin/user/edit.twig', $this->data);
+            View::display('@usergroup/user/edit.twig', $this->data);
         }catch(UserNotFoundException $e){
             App::notFound();
         }catch(Exception $e){

@@ -1,9 +1,11 @@
 <?php
 
-namespace Admin;
+namespace UserGroup\Controllers;
 
 use \App;
 use \View;
+use \Menu;
+use \Admin\BaseController;
 
 class GroupController extends BaseController
 {
@@ -11,14 +13,14 @@ class GroupController extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this->data['menu_active'] = 'group';
+        Menu::get('admin_sidebar')->setActiveMenu('group');
     }
 
     public function index()
     {
         $this->data['title'] = 'Group List';
         /** render the template */
-        View::display('admin/group/index.twig', $this->data);
+        View::display('@usergroup/group/index.twig', $this->data);
     }
 
     public function show()
