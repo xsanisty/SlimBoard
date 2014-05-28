@@ -23,6 +23,17 @@
     </div>
 
     <div class="form-group">
+        <label for="group" class="col-lg-4 control-label">Group</label>
+        <div class="col-lg-8">
+            <select name="group" id="group" multiple="true" class="input-sm form-control">
+                {% for group in groups %}
+                <option value="{{group.id}}">{{group.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
         <label for="password" class="col-lg-4 control-label">Password</label>
         <div class="col-lg-8">
             <input type="password" class="input-sm form-control validate[required,minSize[6],maxSize[50]]" name="password" id="password" placeholder="Password">
