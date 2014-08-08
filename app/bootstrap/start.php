@@ -51,11 +51,8 @@ if(!defined('INSTALL')){
     require APP_PATH.'bootstrap/app.php';
 
     /** registering modules */
-    foreach (glob(APP_PATH.'modules/*') as $module) {
-        $className = basename($module);
-        $moduleBootstrap = "\\$className\\Initialize";
-
-        $app->module->register(new $moduleBootstrap);
+    foreach (Config::get('modules') as $moduleClass) {
+        $app->module->register(new $moduleClass);
     }
 
     $app->module->boot();
