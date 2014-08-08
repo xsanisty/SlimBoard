@@ -13,6 +13,16 @@ class BaseController extends \BaseController
         parent::__construct();
         $this->data['menu_pointer'] = '<div class="pointer"><div class="arrow"></div><div class="arrow_border"></div></div>';
 
+        $this->initAdminSidebar();
+        $this->initAdminTopbar();
+
+        foreach (Module::getModules() as $module) {
+            $module->registerAdminMenu();
+        }
+
+    }
+
+    protected function initAdminSidebar(){
         $adminMenu = Menu::create('admin_sidebar');
         $dashboard = $adminMenu->createItem('dashboard', array(
             'label' => 'Dashboard',
@@ -22,10 +32,9 @@ class BaseController extends \BaseController
 
         $adminMenu->addItem('dashboard', $dashboard);
         $adminMenu->setActiveMenu('dashboard');
+    }
 
-        foreach (Module::getModules() as $module) {
-            $module->registerAdminMenu();
-        }
-
+    protected function initAdminTopbar(){
+        $adminMenu = Menu::create('admin_topbar');
     }
 }
