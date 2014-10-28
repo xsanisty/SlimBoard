@@ -71,6 +71,7 @@ class Bootstrap
             });
 
             $this->app->db->addConnection($config['connections'][$config['default']]);
+            $this->app->db->setEventDispatcher(new \Illuminate\Events\Dispatcher);
             $this->app->db->setAsGlobal();
             $this->app->db->bootEloquent();
         }catch(\Exception $e){
@@ -95,12 +96,13 @@ class Bootstrap
      */
     public function bootSentry($config){
         $app = $this->app;
-        $this->app->container->singleton('sentry', function() use ($app, $config){
+        $bootstrap = $this;
+        $this->app->container->singleton('sentry', function() use ($app, $config, $bootstrap){
 
-            $hasherProvider     = $this->hasherProviderFactory($config);
-            $userProvider       = $this->userProviderFactory($hasherProvider, $config);
-            $groupProvider      = $this->groupProviderFactory($config);
-            $throttleProvider   = $this->throttleProviderFactory($userProvider, $config);
+            $hasherProvider     = $bootstrap->hasherProviderFactory($config);
+            $userProvider       = $bootstrap->userProviderFactory($hasherProvider, $config);
+            $groupProvider      = $bootstrap->groupProviderFactory($config);
+            $throttleProvider   = $bootstrap->throttleProviderFactory($userProvider, $config);
 
             return new Sentry(
                 $userProvider,
