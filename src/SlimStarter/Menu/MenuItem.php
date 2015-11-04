@@ -159,4 +159,15 @@ class MenuItem{
     public function isActive(){
         return $this->active;
     }
+    
+    /**
+     * Add class to an item object
+     * @author [Diego Martin Marmol](http://diegomarmol.com.ar)
+     * @since 2.0.0
+     * @param $newClass {string} new class name
+     */
+    public function addClass($newClass) {
+        $class = $this->getAttribute('class');
+        $this->setAttribute('class', $class.' '.$newClass);
+    }
 }
