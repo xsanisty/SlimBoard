@@ -64,6 +64,19 @@ class MenuManager{
             }
         }
 
+        /**
+         * Child attribute
+         * Adds attributes to the child elements
+         * @author [Diego Martin Marmol](http://diegomarmol.com.ar)
+         * @since 2.0.0
+         */
+        $childAttribute   = '';
+        if(isset($options['child_attributes'])){
+            foreach ($options['child_attributes'] as $key => $value) {
+                $childAttribute.= "$key=\"$value\" ";
+            }
+        } 
+
         $parentTagFormat  = "<$tag $attribute>%s</$tag>";
         $childTagFormat   = "<$childTag %s >%s <a href=\"%s\" %s >%s %s</a>%s %s</$childTag>";
         $childTag         = '';
