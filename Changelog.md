@@ -5,6 +5,7 @@ SlimStarter is a bootstrap application built with Slim Framework in MVC architec
 
 I found it a beautifull mix between a variety of packages (Twig, Eloquent, Sentry, etc.)
 but its a little bit outdated so i decided to fork the project and try to upgrade it as much as i can.
+All the credits to [xsanisty](https://github.com/xsanisty/SlimStarter) for this awesome idea!.
 
 Any contribution will be very usefull!
 
