@@ -8,7 +8,7 @@ but its a little bit outdated so i decided to fork the project and try to upgrad
 
 Any contribution will be very usefull!
 
-* Sorry about my poor english! :( *
+**Sorry about my poor english! :(**
 
 
 ## [2015-11-04] - A new branch has arrived!
