@@ -4,6 +4,9 @@ SlimStarter
 SlimStarter is a bootstrap application built with Slim Framework in MVC architecture,
 with Laravel's Eloquent as database provider (Model) and Twig as template engine (View).
 
+Originaly created by xsanisty, the project was a litte bit forbiden (his lastest commit was about 2 years ago)
+but after a few hours of testing i found it a very nice 'frankestain' framework and decide it to fork it and give it life again!
+
 Additional package is Sentry as authentication provider and Slim-facade which provide easy access to underlying Slim API
 with static interface like Laravel syntax (built based on Laravel's Facade).
 
@@ -16,9 +19,6 @@ with username ```admin@admin.com``` and password ```password```.
 
 
 ####Installation
-
-> You can now install SlimStarter on pagodabox via App Cafe https://pagodabox.com/cafe/ikhsan017/slimstarter
-
 
 #####1 Manual Install
 You can manually install SlimStarter by cloning this repo or download the zip file from this repo, and run ```composer install```.
