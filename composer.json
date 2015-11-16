@@ -5,49 +5,49 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Ikhsan Agustian",
-            "email": "ikhsan017@gmail.com",
+            "name": "Xsanisty Development Team",
+            "email": "developers@xsanisty.com",
             "homepage":"http://www.xsanisty.com/project/slimstarter",
             "role": "developer"
         }
     ],
     "require": {
-        "php": ">= 5.3.0",
-        "slim/slim": "2.4.*",
-        "slim/views":"0.1.2",
+        "php": ">= 5.5.0",
+        "slim/slim": "^3.0@RC",
         "twig/twig": "1.*",
-        "twig/extensions": "*",
-        "itsgoingd/slim-facades": "dev-master",
-        "illuminate/database" : "4.*",
-        "cartalyst/sentry" : "2.*",
+        "illuminate/database" : "5.*",
+        "cartalyst/sentinel" : "2.*",
         "ircmaxell/password-compat": "1.0.*"
+    },
+    "require-dev":{
+        "phpunit/phpunit" : "4.*"
     },
     "autoload": {
         "psr-4": {
-            "" : [
+            "\\" : [
                 "src/",
                 "app/controllers/",
                 "app/models/",
                 "app/middlewares/",
-                "app/modules/"
+                "app/modules/",
+                "app/services",
+                "app/tests/app",
+                "app/tests/src",
+                "app/tests"
             ]
         }
     },
     "scripts": {
         "post-install-cmd": [
-            "chmod -R 777 app/storage",
-            "php migrate.php"
+            "chmod -R 777 app/storage"
         ],
-        "post-update-cmd": [
-            "rm -rf app/storage/cache/*"
-        ],
+        "post-update-cmd": [],
         "post-create-project-cmd": [
-            "chmod -R 777 app/storage",
-            "php migrate.php"
+            "chmod -R 777 app/storage"
         ]
     },
     "config": {
         "preferred-install": "dist"
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }
