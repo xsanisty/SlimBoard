@@ -1,7 +1,6 @@
 vendor
 slim/vendor
 dev
-
 .DS_Store
 *.pyc
 .gaedata
