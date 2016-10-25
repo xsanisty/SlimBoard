@@ -20,8 +20,13 @@
         "itsgoingd/slim-facades": "dev-master",
         "illuminate/database" : "4.*",
         "cartalyst/sentry" : "2.*",
-        "ircmaxell/password-compat": "1.0.*"
+        "ircmaxell/password-compat": "1.0.*",
+        "siriusphp/validation": "1.2.*"
     },
+    "require-dev": {
+        "phpunit/phpunit": "5.5.*"
+    },
+    
     "autoload": {
         "psr-4": {
             "" : [
