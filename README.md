@@ -4,8 +4,10 @@ SlimStarter
 SlimStarter is a bootstrap application built with Slim Framework in MVC architecture,
 with Laravel's Eloquent as database provider (Model) and Twig as template engine (View).
 
-Additional package is Sentry as authentication provider and Slim-facade which provide easy access to underlying Slim API
-with static interface like Laravel syntax (built based on Laravel's Facade).
+Originaly created by xsanisty, the project was a litte bit forbiden (his lastest commit was about 2 years ago)
+but after a few hours of testing i found it a very nice 'frankestain' framework and decide it to fork it and give it life again!
+
+You can check the original project [here](https://github.com/xsanisty/SlimStarter)
 
 ####Showcase
 You can test SlimStarter in live site by visiting here :
@@ -274,3 +276,4 @@ class SomeActionMiddleware extends Middleware
 ```
 
 In case autoloader cannot resolve your classes, do ```composer dump-autoload``` so composer can resolve your class location
+>>>>>>> db8c7e3867e8991001bc039835dd0b237b6e05e0
