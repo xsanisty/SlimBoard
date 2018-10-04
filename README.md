@@ -7,7 +7,7 @@ with Laravel's Eloquent as database provider (Model) and Twig as template engine
 Additional package is Sentry as authentication provider and Slim-facade which provide easy access to underlying Slim API
 with static interface like Laravel syntax (built based on Laravel's Facade).
 
-####Showcase
+## Showcase
 You can test SlimStarter in live site by visiting here :
 (shared hosting) http://slimstarter.xsanisty.com
 (pagodabox) http://slimstarter.gopagoda.com
@@ -15,44 +15,42 @@ You can test SlimStarter in live site by visiting here :
 with username ```admin@admin.com``` and password ```password```.
 
 
-####Installation
+## Installation
 
 > You can now install SlimStarter on pagodabox via App Cafe https://pagodabox.com/cafe/ikhsan017/slimstarter
 
 
-#####1 Manual Install
+#### 1 Manual Install
 You can manually install SlimStarter by cloning this repo or download the zip file from this repo, and run ```composer install```.
 ```
 $git clone https://github.com/xsanisty/SlimStarter.git .
 $composer install
 ```
 
-#####2 Install via ```composer create-project```
+#### 2 Install via ```composer create-project```
 Alternatively, you can use ```composer create-project``` to install SlimStarter without downloading zip or cloning this repo.
 
 ```
 composer create-project xsanisty/slim-starter --stability="dev"
 ```
 
-#####3 Setup Permission
+#### 3 Setup Permission
 After composer finished install the dependencies, you need to change file and folder permission.
 ```
 chmod -R 777 app/storage/
 chmod 666 app/config/database.php
 ```
 
-#####4 Configure and Setup Database
+#### 4 Configure and Setup Database
 You can now access the installer by pointing install.php in your browser
 ```
 http://localhost/path/to/SlimStarter/public/install.php
 ```
 
-
-
-####Configuration
+## Configuration
 Configuration file of SlimStarter located in ```app/config```, edit the database.php, cookie.php and other to match your need
 
-####Routing
+## Routing
 Routing configuration is located in ```app/routes.php```, it use Route facade to access underlying Slim router.
 If you prefer the 'Slim' way, you can use $app to access Slim instance
 
@@ -125,7 +123,7 @@ Route::controller('/book', 'BookController');
  */
 ```
 
-####Model
+## Model
 Models are located in ```app/models``` directory, since Eloquent is used as database provider, you can write model like you
 write model for Laravel, for complete documentation about eloquent, please refer to http://laravel.com/docs/eloquent
 
@@ -137,7 +135,7 @@ class Book Extends Model{}
 such as ```remember()```, ```paginate```, and validation method, which is depend on ```Illuminate\Cache```, ```Illuminate\Filesystem```,
 ```Symfony\Finder```, etc.
 
-####Controller
+## Controller
 Controllers are located in ```app/controllers``` directory, you may extends the BaseController to get access to predefined helper.
 You can also place your controller in namespace to group your controller.
 
@@ -152,15 +150,15 @@ Class HomeController extends BaseController{
 }
 ```
 
-#####Controller helper
+## Controller helper
 
-######Get reference to Slim instance
+### Get reference to Slim instance
 You can access Slim instance inside your controller by accessing $app property
 ```php
 $this->app; //reference to Slim instance
 ```
 
-######Loading javascript assets or CSS assets
+### Loading javascript assets or CSS assets
 SlimStarter shipped with default master template with js and css asset already in place, to load your own js or css file
 you can use ```loadJs``` or ```loadCss``` , ```removeJs``` or ```removeCss``` to remove js or css, ```resetJs``` or ```resetCss```
 to remove all queued js or css file.
@@ -201,7 +199,7 @@ $this->loadCss('//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'
 /**
 ```
 
-######Publish PHP variable to javascript
+### Publish PHP variable to javascript
 You can also publish PHP variable to make it accessible via javascript (must extends master.twig)
 ```php
 /** publish the variable */
@@ -216,9 +214,9 @@ the user variable will be accessible in 'global' namespace
 console.log(global.user);
 ```
 
-######Default variable available in template
+### Default variable available in template
 
-####View
+## View
 Views file are located in ```app/views``` directory in twig format, there is master.twig with 'body' block as default master template
 shipped with SlimStarer that will provide default access to published js variable.
 
@@ -234,7 +232,7 @@ file : app/views/welcome.twig
 
 ```
 
-#####Rendering view inside controller
+### Rendering view inside controller
 If your controller extends the BaseController class, you will have access to $data property which will be the placeholder for all
 view's data.
 
@@ -242,7 +240,7 @@ view's data.
 View::display('welcome.twig', $this->data);
 ```
 
-####Hooks and Middlewares
+## Hooks and Middlewares
 You can still hook the Slim event, or registering Middleware to Slim instance in ```app/bootstrap/app.php```,
 Slim instance is accessible in ```$app``` variable.
 
